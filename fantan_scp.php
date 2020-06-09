@@ -50,7 +50,7 @@ foreach ($events['events'] as $event) {
                     'text' => $bettext[0] . $bettext[1]
                 ];
             } else if (strpos($text, "/") == true) {
-                $bettext = explode("=", $text);
+                $bettext = explode("/", $text);
                 $messages = [
                     'type' => 'text',
                     'text' => $bettext[0] . $bettext[1]
