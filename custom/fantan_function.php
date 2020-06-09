@@ -140,6 +140,9 @@ function checkbetstring($text,$code)
         } else if ($bet_string == "@open") {
 
             $bet_string = "เปิดรอบ";
+        } else if ($bet_string == "1") {
+
+            $bet_string = "เปิดรอบ";
         } else {
             $bet_string = false;
         }
