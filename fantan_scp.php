@@ -43,11 +43,13 @@ foreach ($events['events'] as $event) {
 
         if ($split_slash_count == 0) {
 
-            $bet_type = "single";
-            $bettext = explode("/", $text);
-            // $bettext = explode("=", $text);
-
             if (strpos($text, "=") == true) {
+                $bettext = explode("=", $text);
+                $messages = [
+                    'type' => 'text',
+                    'text' => $bettext[0] . $bettext[1]
+                ];
+            } else if (strpos($text, "/") == true) {
                 $bettext = explode("=", $text);
                 $messages = [
                     'type' => 'text',
