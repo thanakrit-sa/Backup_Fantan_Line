@@ -46,12 +46,18 @@ foreach ($events['events'] as $event) {
             $bet_type = "single";
             $bettext = explode("/", $text);
             $bettext = explode("=", $text);
-            
 
-            $messages = [
-                'type' => 'text',
-                'text' => $bettext[0] . $bettext[1]
-            ];
+            if (strpos($text, "=") == true) {
+                $messages = [
+                    'type' => 'text',
+                    'text' => $bettext[0] . $bettext[1]
+                ];
+            } else {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "not"
+                ]; 
+            }
         } else if ($split_slash_count > 0) {
 
             $reponse_bet = '';
