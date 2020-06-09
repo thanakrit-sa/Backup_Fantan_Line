@@ -1,8 +1,5 @@
 <?php
-
-
 include('./config.php');
-// require_once('./custom/fantan_function.php');
 
 http_response_code(200);
 
@@ -32,7 +29,7 @@ foreach ($events['events'] as $event) {
                 if ($bet_text >= 1 && $bet_text <= 4) {
                     $messages = [
                         'type' => 'text',
-                        'text' => " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                        'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
                     ];
                 } else {
                     $messages = [
@@ -47,7 +44,7 @@ foreach ($events['events'] as $event) {
                 if ($bet_text >= 1 && $bet_text <= 4) {
                     $messages = [
                         'type' => 'text',
-                        'text' => " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                        'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
                     ];
                 } else {
                     $messages = [
