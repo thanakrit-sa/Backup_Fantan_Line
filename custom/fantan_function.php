@@ -60,9 +60,6 @@ function linedisplayname($groupID, $userID)
 
 function checkbetstring($text)
 {
-
-    // $text = preg_replace('/[0-9]+/', '', $text);
-    // $code = preg_replace('/[0-9]+/', '', $code);
     $bet_string  = preg_replace("/[^0-9]/", "", $text);
     return $bet_string;
 }

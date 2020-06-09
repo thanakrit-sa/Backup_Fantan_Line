@@ -17,7 +17,6 @@ foreach ($events['events'] as $event) {
     $groupID = $event['source']['groupId'];
     $text = $event['message']['text'];
     $replyToken = $event['replyToken'];
-    $text = iconv_substr($text, 0);
     $text_forcheck_string = $text;
     $text_forcheck_number = $text;
     $user_displayname = linedisplayname($groupID, $userID);
