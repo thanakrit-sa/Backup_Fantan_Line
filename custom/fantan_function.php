@@ -58,36 +58,113 @@ function linedisplayname($groupID, $userID)
 
 // }
 
-// function checkbetstring($text1)
-// {
-//     $bet_string  = preg_replace("/[^0-9]/", "", $text1);
-//     return $bet_string;
-// }
+function checkbetstring($text,$code)
+{
+
+    $text = preg_replace('/[0-9]+/', '', $text);
+    $code = preg_replace('/[0-9]+/', '', $code);
+    $bet_string = preg_replace("/[^a-zก-๙]/", "", $text);
+
+    // return $bet_string;
+    if (substr_count($bet_string, 'count') > 0) {
+
+        return false;
+    } else {
+
+        if ($bet_string == "ส") {
+
+            $bet_string = "เสือ";
+            $code = "/100";
+        } else if ($bet_string == "ม") {
+
+            $bet_string = "มังกร";
+            $code = "/200";
+        } else if ($bet_string == "ค") {
+
+            $bet_string = "คู่";
+            $code = "/300";
+        } else if ($bet_string == "สม") {
+
+            $bet_string = "เสมอ";
+            $code = "/400";
+        } else if ($bet_string == "สคู่") {
+
+            $bet_string = "เสือเลขคู่";
+            $code = "/110";
+        } else if ($bet_string == "สคี่") {
+
+            $bet_string = "เสือเลขคี่";
+            $code = "/120";
+        } else if ($bet_string == "มคู่") {
+
+            $bet_string = "มังกรคู่";
+            $code = "/210";
+        } else if ($bet_string == "มคี่") {
+
+            $bet_string = "มังกรคี่";
+            $code = "/220";
+        } else if ($bet_string == "สดำ") {
+
+            $bet_string = "เสือดำ";
+            $code = "/130";
+        } else if ($bet_string == "สแดง") {
+
+            $bet_string = "เสือแดง";
+            $code = "/140";
+        } else if ($bet_string == "มดำ") {
+
+            $bet_string = "มังกรดำ";
+            $code = "/230";
+        } else if ($bet_string == "มแดง") {
+
+            $bet_string = "มังกรแดง";
+            $code = "/240";
+        } else if ($bet_string == "info") {
+
+            $bet_string = "ข้อมูล";
+        } else if ($bet_string == "id") {
+
+            $bet_string = "คงเหลือ";
+        } else if ($bet_string == "x") {
+
+            $bet_string = "ยกเลิก";
+        } else if ($bet_string == "c") {
+
+            $bet_string = "ประวัติ";
+        } else if ($bet_string == "play") {
+
+            $bet_string = "สมัคร";
+        } else if ($bet_string == "step") {
+
+            $bet_string = "การเล่น";
+        } else if ($bet_string == "@open") {
+
+            $bet_string = "เปิดรอบ";
+        } else {
+            $bet_string = false;
+        }
+
+        return $bet_string .$code;
+    }
+}
 
 
+function checkbetvalue($text)
+{
 
-// function checkbetvalue($text2)
-// {
+    $bet_value  = preg_replace("/[^0-9]/", "", $text);
+    return $bet_value;
+}
 
-//     $bet_value  = preg_replace("/[^0-9]/", "", $text2);
-//     return $bet_value;
-// }
-// function checkbetvalueAfter($text2)
-// {
+function checkvalidpattern($text)
+{
 
-//     $bet_after  = preg_replace("/[^0-9]/", "", $text2);
-//     return $bet_after;
-// }
+    $result = array();
+    $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
+    if (count($result) > 2 || count($result) < 2) {
+        return false;
+    } else if (count($result) == 2) {
 
-// function checkvalidpattern($text)
-// {
-
-//     $result = array();
-//     $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
-//     if (count($result) > 2 || count($result) < 2) {
-//         return false;
-//     } else if (count($result) == 2) {
-
-//         return true;
-//     }
-// }
+        return true;
+    }
+}
