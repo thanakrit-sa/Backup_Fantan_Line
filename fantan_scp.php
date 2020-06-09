@@ -73,7 +73,7 @@ foreach ($events['events'] as $event) {
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => $bet_string . $bet_after
+                        'text' => $bet_string . "=" . $bet_after
                     ];
                 }
             }
