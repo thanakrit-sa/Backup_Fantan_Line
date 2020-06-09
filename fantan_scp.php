@@ -37,21 +37,28 @@ foreach ($events['events'] as $event) {
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => "error"
+                        'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
             } else if (strpos($text, "/") == true) {
                 $bet_data = explode("/", $text);
                 $bet_text = $bet_data[0];
                 $bet_value = $bet_data[1];
-                $messages = [
-                    'type' => 'text',
-                    'text' => $bet_text . $bet_value
-                ];
+                if ($bet_text >= 1 && $bet_text <= 4) {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                    ];
+                } else {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
+                    ];
+                }
             } else {
                 $messages = [
                     'type' => 'text',
-                    'text' => "not"
+                    'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                 ];
             }
         } else if ($split_slash_count > 0) {
