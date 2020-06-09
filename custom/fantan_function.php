@@ -142,7 +142,7 @@ function checkbetstring($text)
             $bet_string = "เปิดรอบ";
         } else if ($bet_string == "1") {
 
-            $bet_string = "เปิดรอบ";
+            $bet_string = "1";
         } else {
             $bet_string = false;
         }
