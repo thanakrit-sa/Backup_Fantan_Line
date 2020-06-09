@@ -53,9 +53,6 @@ foreach ($events['events'] as $event) {
             $bet_string = checkbetstring($text);
             $bet_before = checkbetvalueBefore($text);
             $bet_after = checkbetvalueAfter($text);
-            $code = explode("/", $bet_string);
-            $bet_text = $code[0];
-            $bet_code = $code[1];
 
             if ($bet_string == "ข้อมูล") {
                 $messages = [
@@ -76,7 +73,7 @@ foreach ($events['events'] as $event) {
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => $bet_before . "=" . $bet_after
+                        'text' => $bet_string . $bet_after
                     ];
                 }
             }

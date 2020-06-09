@@ -71,9 +71,14 @@ function checkbetstring($text)
         return false;
     } else {
 
-        if ($bet_string == "ส") {
-
-            $bet_string = "เสือ";
+        if ($bet_string == "1") {
+            $bet_string = "1=";
+        } else if ($bet_string == "2") {
+            $bet_string = "2=";
+        } else if ($bet_string == "3") {
+            $bet_string = "3=";
+        } else if ($bet_string == "4") {
+            $bet_string = "4=";
         } else {
             $bet_string = false;
         }
