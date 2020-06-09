@@ -77,8 +77,8 @@ function checkbetstring($text)
             $bet_string = "2";
         } else if ($bet_string == "3") {
             $bet_string = "3";
-        } else if ($bet_string == "4") {
-            $bet_string = "4";
+        } else if ($bet_string == "a") {
+            $bet_string = "a";
         } else {
             $bet_string = false;
         }
