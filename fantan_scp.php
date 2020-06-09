@@ -258,48 +258,6 @@ foreach ($events['events'] as $event) {
                         ]
                     ];
                 } else {
-                    $ch = curl_init('http://e-sport.in.th/ssdev/dt/dashboard/api/user_test/profile/' . $userID);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-                    $result = curl_exec($ch);
-                    curl_close($ch);
-                    $resultData = json_decode($result, true);
-                    $data = $resultData['data'];
-                    $user_id = $data['id'];
-
-                    $data = array(
-                        "user_id" => $user_id,
-                        "user_lineid" => $userID,
-                        "user_displayname" => $user_displayname,
-                        "bet_text" => $bet_text,
-                        "value" => $bet_value,
-                        "bet_code" => $bet_code
-                    );
-
-                    $request = "";
-
-                    foreach ($data as $key => $val) {
-                        $request .= $key . "=" . $val . "&";
-                    }
-
-                    $request = rtrim($request, "&");
-
-                    $url = 'http://e-sport.in.th/ssdev/dt/dashboard/api/bet_test/logbet_create';
-
-                    $ch = curl_init();
-
-                    curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-                    $response = curl_exec($ch);
-                    curl_close($ch);
-
-                    echo $response;
-
                     $messages = [
                         'type' => 'text',
                         'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "เดิมพัน : " . $bet_text . "\r\n" . "จำนวน : " . $bet_value . " บาท" . "\r\n" . "รหัสเดิมพัน : " . $bet_code
