@@ -61,7 +61,7 @@ function linedisplayname($groupID, $userID)
 function checkbetstring($text)
 {
 
-    $text = preg_replace("/[^a-zก-๙]/", "", $text);
+    // $text = preg_replace("/[^a-zก-๙]/", "", $text);
     // $code = preg_replace('/[0-9]+/', '', $code);
     $bet_string = preg_replace('/[0-9]+/', '', $text);
 
