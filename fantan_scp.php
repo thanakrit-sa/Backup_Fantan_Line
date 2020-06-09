@@ -39,12 +39,13 @@ foreach ($events['events'] as $event) {
     }
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-        $split_slash_count = substr_count($text, "/");
+        $split_slash_count = substr_count($text, "\n");
 
         if ($split_slash_count == 0) {
 
             $bet_type = "single";
             $bettext = explode("=", $text);
+            $bettext = explode("/", $text);
 
             $messages = [
                 'type' => 'text',
