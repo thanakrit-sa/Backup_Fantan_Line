@@ -88,16 +88,16 @@ function checkbetstring($text)
 }
 
 
-function checkbetvalueBefore($text)
+function checkbetvalueBefore($text1)
 {
 
-    $bet_before  = preg_replace("/[^0-9]/", "", $text);
+    $bet_before  = preg_replace("/[^0-9]/", "", $text1);
     return $bet_before;
 }
-function checkbetvalueAfter($text)
+function checkbetvalueAfter($text2)
 {
 
-    $bet_after  = preg_replace("/[^0-9]/", "", $text);
+    $bet_after  = preg_replace("/[^0-9]/", "", $text2);
     return $bet_after;
 }
 
