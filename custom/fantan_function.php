@@ -71,7 +71,7 @@ function checkbetstring($text)
         return false;
     } else {
 
-        if ($bet_string == "1") {
+        if ($bet_string == "1=") {
             $bet_string = "1";
         } else if ($bet_string == "2") {
             $bet_string = "2";
