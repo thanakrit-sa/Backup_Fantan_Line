@@ -19,43 +19,34 @@ foreach ($events['events'] as $event) {
     $text = $event['message']['text'];
     $replyToken = $event['replyToken'];
 
-    if ($event['type'] == 'follow') {
-        $messages = [
-            'type' => 'text',
-            'text' => "🧐 เริ่มการเดิมพันพิมพ์ : play " . "\r\n" . "💰 เช็กยอดคงเหลือพิมพ์ : id " . "\r\n" . "🤩 วิธีการเดิมพันพิมพ์ : step " . "\r\n" . "⛔️ ยกเลิกการเดิมพันพิมพ์ : x " . "\r\n" . "📑 ประวัติการเดิมพันพิมพ์ : c "
-        ];
-    }
-    if ($event['type'] == 'memberJoined') {
-        $messages = [
-            'type' => 'text',
-            'text' => "ยินดีต้อนรับ : " . $user_displayname . "\r\n" . "🧐 เริ่มการเดิมพันพิมพ์ : play " . "\r\n" . "💰 เช็กยอดคงเหลือพิมพ์ : id " . "\r\n" . "🤩 วิธีการเดิมพันพิมพ์ : step " . "\r\n" . "⛔️ ยกเลิกการเดิมพันพิมพ์ : x " . "\r\n" . "📑 ประวัติการเดิมพันพิมพ์ : c "
-        ];
-    }
-    if ($event['type'] == 'join') {
-        $messages = [
-            'type' => 'text',
-            'text' => "🧐 เริ่มการเดิมพันพิมพ์ : play " . "\r\n" . "💰 เช็กยอดคงเหลือพิมพ์ : id " . "\r\n" . "🤩 วิธีการเดิมพันพิมพ์ : step " . "\r\n" . "⛔️ ยกเลิกการเดิมพันพิมพ์ : x " . "\r\n" . "📑 ประวัติการเดิมพันพิมพ์ : c "
-        ];
-    }
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
         $split_slash_count = substr_count($text, "\n");
-        $bet_data = explode("=", $text);
-        $bet_text = $bet_data[0];
-        $bet_value = $bet_data[1];
+
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-
+                $bet_data = explode("=", $text);
+                $bet_text = $bet_data[0];
+                $bet_value = $bet_data[1];
+                if ($bet_text >= 1 && $bet_text <= 4) {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                    ];
+                } else {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "error"
+                    ];
+                }
+            } else if (strpos($text, "/") == true) {
+                $bet_data = explode("/", $text);
+                $bet_text = $bet_data[0];
+                $bet_value = $bet_data[1];
                 $messages = [
                     'type' => 'text',
                     'text' => $bet_text . $bet_value
-                ];
-            } else if (strpos($text, "/") == true) {
-                $bettext = explode("/", $text);
-                $messages = [
-                    'type' => 'text',
-                    'text' => $bettext[0] . $bettext[1]
                 ];
             } else {
                 $messages = [
@@ -77,68 +68,8 @@ foreach ($events['events'] as $event) {
                 $code = explode("/", $bet_string);
                 $bet_text = $code[0];
                 $bet_code = $code[1];
-
-
-                // echo $bet_string;
-                if (!$bet_string) {
-
-                    $element_reponse = '# ' . $i . ' รูปแบบการเดิมพันของท่านไม่ถูกต้อง';
-                } else if (!is_numeric($bet_value)) {
-
-
-                    $element_reponse = '# ' . $i . ' ยอดเงินเดิมพันไม่ถูกต้อง';
-                } else {
-                    $ch = curl_init('http://e-sport.in.th/ssdev/dt/dashboard/api/user_test/profile/' . $userID);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-                    $result = curl_exec($ch);
-                    curl_close($ch);
-                    $resultData = json_decode($result, true);
-                    $data = $resultData['data'];
-                    $user_id = $data['id'];
-                    $credit = $data['credit'];
-
-                    $data = array(
-                        "user_id" => $user_id,
-                        "user_lineid" => $userID,
-                        "user_displayname" => $user_displayname,
-                        "bet_text" => $bet_text,
-                        "value" => $bet_value,
-                        "bet_code" => $bet_code
-                    );
-
-                    $request = "";
-
-                    foreach ($data as $key => $val) {
-                        $request .= $key . "=" . $val . "&";
-                    }
-
-                    $request = rtrim($request, "&");
-
-                    $url = 'http://e-sport.in.th/ssdev/dt/dashboard/api/bet_test/logbet_create';
-
-                    $ch = curl_init();
-
-                    curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-                    $response = curl_exec($ch);
-                    curl_close($ch);
-
-                    echo $response;
-
-                    $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
-                }
-
-
                 $reponse_bet = $reponse_bet . "\n" . $element_reponse;
             }
-
-
             $messages = [
                 'type' => 'text',
                 'text' => " ชื่อผู้ใช้งาน : " . $user_displayname . " " . $reponse_bet . "\r\n" . "💰 ยอดเงินคงเหลือ : " . $credit
