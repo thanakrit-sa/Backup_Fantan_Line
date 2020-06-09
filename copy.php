@@ -18,6 +18,7 @@ foreach ($events['events'] as $event) {
     $groupID = $event['source']['groupId'];
     $text = $event['message']['text'];
     $replyToken = $event['replyToken'];
+    $bettext = explode("=",$text);
 
     if ($event['type'] == 'follow') {
         $messages = [
@@ -44,12 +45,39 @@ foreach ($events['events'] as $event) {
         if ($split_slash_count == 0) {
 
             $bet_type = "single";
-            $bettext = explode("=", $text);
 
-            $messages = [
-                'type' => 'text',
-                'text' => $text . $bettext
-            ];
+            $bet_string = checkbetstring($text);
+            $bet_value = checkbetvalue($text);
+            $code = explode("/", $bet_string);
+            $bet_text = $code[0];
+            $bet_code = $code[1];
+
+            if ($bet_string == "ข้อมูล") {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "UserID : " . $userID . "\r\n" . "GroupID : " . $groupID
+                ];
+            } else {
+                if (!$bet_string) {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "⛔️ รูปแบบการเดิมพันไม่ถูกต้อง",
+                        
+                    ];
+                } else if (!is_numeric($bet_value)) {
+
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "⛔️ ยอดเงินเดิมพันไม่ถูกต้อง",
+                        
+                    ];
+                } else {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "เดิมพัน : " . $bet_text . "\r\n" . "จำนวน : " . $bet_value . " บาท"
+                    ];
+                }
+            }
         } else if ($split_slash_count > 0) {
 
             $reponse_bet = '';
@@ -138,19 +166,20 @@ foreach ($events['events'] as $event) {
 
 
 
-$url = 'https://api.line.me/v2/bot/message/reply';
-$data = [
-    'replyToken' => $replyToken,
-    'messages' => [$messages],
-];
-$post = json_encode($data);
-$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+    $url = 'https://api.line.me/v2/bot/message/reply';
+    $data = [
+        'replyToken' => $replyToken,
+        'messages' => [$messages],
+    ];
+    $post = json_encode($data);
+    $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-$result = curl_exec($ch);
-curl_close($ch);
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
