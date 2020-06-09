@@ -52,7 +52,7 @@ foreach ($events['events'] as $event) {
 
             $bet_string = checkbetstring($text);
             $bet_value = checkbetvalue($text);
-            $bet_after = checkbetvalueAfter($text2);
+            // $bet_after = checkbetvalueAfter($text2);
 
             if ($bet_string == "ข้อมูล") {
                 $messages = [
@@ -73,7 +73,7 @@ foreach ($events['events'] as $event) {
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => $bet_string
+                        'text' => $bet_string . $bet_value
                     ];
                 }
             }
