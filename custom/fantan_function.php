@@ -159,3 +159,15 @@ function checkbetvalue($text)
     return $bet_value;
 }
 
+function checkvalidpattern($text)
+{
+
+    $result = array();
+    $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
+    if (count($result) > 2 || count($result) < 2) {
+        return false;
+    } else if (count($result) == 2) {
+
+        return true;
+    }
+}
