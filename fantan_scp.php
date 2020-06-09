@@ -48,7 +48,7 @@ foreach ($events['events'] as $event) {
 
             $messages = [
                 'type' => 'text',
-                'text' => $text . $bettext[0] . $bettext[1] . $bettext[2]
+                'text' => $text . $bettext[0] . $bettext[1]
             ];
         } else if ($split_slash_count > 0) {
 
