@@ -67,7 +67,7 @@ function checkbetstring($text)
 
     // return $bet_string;
    
-        if ($bet_string == "1") {
+        if ($bet_string == "1a") {
             $bet_string = "sdfs";
         } else if ($bet_string == "2") {
             $bet_string = "2";
