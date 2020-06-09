@@ -155,19 +155,7 @@ function checkbetstring($text)
 function checkbetvalue($text)
 {
 
-    $bet_value  = preg_replace("/[^a-zก-๙]/", "", $text);
+    $bet_value  = preg_replace("/[^0-9]/", "", $text);
     return $bet_value;
 }
 
-function checkvalidpattern($text)
-{
-
-    $result = array();
-    $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
-    if (count($result) > 2 || count($result) < 2) {
-        return false;
-    } else if (count($result) == 2) {
-
-        return true;
-    }
-}
