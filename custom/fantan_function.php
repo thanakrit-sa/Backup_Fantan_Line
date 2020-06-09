@@ -66,11 +66,7 @@ function checkbetstring($text)
     $bet_string = preg_replace('/[0-9]+/', '', $text);
 
     // return $bet_string;
-    if (substr_count($bet_string, 'count') > 0) {
-
-        return false;
-    } else {
-
+   
         if ($bet_string == "1") {
             $bet_string = "sdfs";
         } else if ($bet_string == "2") {
@@ -84,8 +80,8 @@ function checkbetstring($text)
         }
 
         return $bet_string;
-    }
 }
+
 
 
 function checkbetvalue($text)
