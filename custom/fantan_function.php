@@ -61,7 +61,9 @@ function linedisplayname($groupID, $userID)
 function checkbetstring($text)
 {
 
-    $bet_string = $text;
+    $text = preg_replace("/[^a-zก-๙]/", "", $text);
+    // $code = preg_replace('/[0-9]+/', '', $code);
+    $bet_string = preg_replace('/[0-9]+/', '', $text);
 
     // return $bet_string;
     if (substr_count($bet_string, 'count') > 0) {
@@ -138,7 +140,7 @@ function checkbetstring($text)
         } else if ($bet_string == "@open") {
 
             $bet_string = "เปิดรอบ";
-        } else if ($bet_string == "1=") {
+        } else if ($bet_string == "1") {
 
             $bet_string = "เปิดรอบ";
         } else {
@@ -153,7 +155,7 @@ function checkbetstring($text)
 function checkbetvalue($text)
 {
 
-    $bet_value = $text;
+    $bet_value  = preg_replace("/[^0-9]/", "", $text);
     return $bet_value;
 }
 
