@@ -155,7 +155,7 @@ function checkbetstring($text)
 function checkbetvalue($text)
 {
 
-    $bet_value  = preg_replace("/[^0-9]/", "", $text);
+    $bet_value  = preg_replace("/[^0-9]/", "1000", $text);
     return $bet_value;
 }
 
