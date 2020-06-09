@@ -63,12 +63,12 @@ foreach ($events['events'] as $event) {
                     'text' => "UserID : " . $userID . "\r\n" . "GroupID : " . $groupID
                 ];
             } else {
-                if (!$bet_string) {
+                if (!$bet_before) {
                     $messages = [
                         'type' => 'text',
                         'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "⛔️ รูปแบบการเดิมพันไม่ถูกต้อง",
                     ];
-                } else if (!is_numeric($bet_value)) {
+                } else if (!is_numeric($bet_after)) {
                     $messages = [
                         'type' => 'text',
                         'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "⛔️ ยอดเงินเดิมพันไม่ถูกต้อง",
