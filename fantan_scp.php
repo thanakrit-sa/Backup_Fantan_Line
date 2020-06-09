@@ -30,7 +30,7 @@
 // echo $response;
 
 include('./config.php');
-require_once('./custom/dt_function.php');
+require_once('./custom/fantan_function.php');
 
 http_response_code(200);
 
