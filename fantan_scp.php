@@ -40,14 +40,16 @@ foreach ($events['events'] as $event) {
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
         $split_slash_count = substr_count($text, "\n");
-
+        $bet_data = explode("=", $text);
+        $bet_text = $bet_data[0];
+        $bet_value = $bet_data[1];
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-                $bettext = explode("=", $text);
+
                 $messages = [
                     'type' => 'text',
-                    'text' => $bettext[0] . $bettext[1]
+                    'text' => $bet_text . $bet_value
                 ];
             } else if (strpos($text, "/") == true) {
                 $bettext = explode("/", $text);
@@ -59,7 +61,7 @@ foreach ($events['events'] as $event) {
                 $messages = [
                     'type' => 'text',
                     'text' => "not"
-                ]; 
+                ];
             }
         } else if ($split_slash_count > 0) {
 
