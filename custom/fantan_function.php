@@ -97,15 +97,15 @@ function checkbetvalueAfter($text2)
     return $bet_after;
 }
 
-function checkvalidpattern($text)
-{
+// function checkvalidpattern($text)
+// {
 
-    $result = array();
-    $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
-    if (count($result) > 2 || count($result) < 2) {
-        return false;
-    } else if (count($result) == 2) {
+//     $result = array();
+//     $result = preg_split('/(?<=\D)(?=\d)|\d+\K/', $text);
+//     if (count($result) > 2 || count($result) < 2) {
+//         return false;
+//     } else if (count($result) == 2) {
 
-        return true;
-    }
-}
+//         return true;
+//     }
+// }
