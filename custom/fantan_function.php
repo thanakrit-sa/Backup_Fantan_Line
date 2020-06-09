@@ -58,20 +58,20 @@ function linedisplayname($groupID, $userID)
 
 // }
 
-function checkbetstring($text1)
-{
-    $bet_string  = preg_replace("/[^0-9]/", "", $text1);
-    return $bet_string;
-}
+// function checkbetstring($text1)
+// {
+//     $bet_string  = preg_replace("/[^0-9]/", "", $text1);
+//     return $bet_string;
+// }
 
 
 
-function checkbetvalue($text2)
-{
+// function checkbetvalue($text2)
+// {
 
-    $bet_value  = preg_replace("/[^0-9]/", "", $text2);
-    return $bet_value;
-}
+//     $bet_value  = preg_replace("/[^0-9]/", "", $text2);
+//     return $bet_value;
+// }
 // function checkbetvalueAfter($text2)
 // {
 

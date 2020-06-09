@@ -48,8 +48,8 @@ foreach ($events['events'] as $event) {
 
             $bet_type = "single";
 
-            $bet_string = checkbetstring($text1);
-            $bet_value = checkbetvalue($text2);
+            $bet_string = $text1;
+            $bet_value = $text2;
             // $bet_after = checkbetvalueAfter($text2);
 
             if ($bet_string == "ข้อมูล") {
