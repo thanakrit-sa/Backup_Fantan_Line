@@ -77,8 +77,8 @@ function checkbetstring($text)
             $bet_string = "2";
         } else if ($bet_string == "3") {
             $bet_string = "3";
-        } else if ($bet_string == "a") {
-            $bet_string = "a";
+        } else if ($bet_string == "ม") {
+            $bet_string = "มังกร";
         } else {
             $bet_string = false;
         }
