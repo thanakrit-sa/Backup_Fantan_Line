@@ -50,8 +50,9 @@ foreach ($events['events'] as $event) {
 
             $bet_type = "single";
 
-            $bet_string = checkbetstring($text, $code);
-            $bet_value = checkbetvalue($text);
+            $bet_string = checkbetstring($text);
+            $bet_before = checkbetvalueBefore($text);
+            $bet_after = checkbetvalueAfter($text);
             $code = explode("/", $bet_string);
             $bet_text = $code[0];
             $bet_code = $code[1];
@@ -71,44 +72,43 @@ foreach ($events['events'] as $event) {
                     $messages = [
                         'type' => 'text',
                         'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "⛔️ ยอดเงินเดิมพันไม่ถูกต้อง",
-
                     ];
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "เดิมพัน : " . $bet_text . "\r\n" . "จำนวน : " . $bet_value . " บาท" . "\r\n" . "รหัสเดิมพัน : " . $bet_code
+                        'text' => $bet_before . "=" . $bet_after
                     ];
                 }
             }
         } else if ($split_slash_count > 0) {
 
-            $reponse_bet = '';
-            $bet_type = "multiple";
-            $arrKeywords = explode("/", $text);
-            $i = 0;
-            foreach ($arrKeywords as $element) {
+            // $reponse_bet = '';
+            // $bet_type = "multiple";
+            // $arrKeywords = explode("/", $text);
+            // $i = 0;
+            // foreach ($arrKeywords as $element) {
 
-                $i++;
-                $bet_string = checkbetstring($element, $code);
-                $bet_value = checkbetvalue($element);
-                $code = explode("/", $bet_string);
-                $bet_text = $code[0];
-                $bet_code = $code[1];
+            //     $i++;
+            //     $bet_string = checkbetstring($element, $code);
+            //     $bet_value = checkbetvalue($element);
+            //     $code = explode("/", $bet_string);
+            //     $bet_text = $code[0];
+            //     $bet_code = $code[1];
 
-                // echo $bet_string;
-                if (!$bet_string) {
-                    $element_reponse = '# ' . $i . ' รูปแบบการเดิมพันของท่านไม่ถูกต้อง';
-                } else if (!is_numeric($bet_value)) {
-                    $element_reponse = '# ' . $i . ' ยอดเงินเดิมพันไม่ถูกต้อง';
-                } else {
-                    $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
-                }
-                $reponse_bet = $reponse_bet . "\n" . $element_reponse;
-            }
-            $messages = [
-                'type' => 'text',
-                'text' => " ชื่อผู้ใช้งาน : " . $user_displayname . " " . $reponse_bet . "\r\n" . "💰 ยอดเงินคงเหลือ : " . $credit
-            ];
+            //     // echo $bet_string;
+            //     if (!$bet_string) {
+            //         $element_reponse = '# ' . $i . ' รูปแบบการเดิมพันของท่านไม่ถูกต้อง';
+            //     } else if (!is_numeric($bet_value)) {
+            //         $element_reponse = '# ' . $i . ' ยอดเงินเดิมพันไม่ถูกต้อง';
+            //     } else {
+            //         $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
+            //     }
+            //     $reponse_bet = $reponse_bet . "\n" . $element_reponse;
+            // }
+            // $messages = [
+            //     'type' => 'text',
+            //     'text' => " ชื่อผู้ใช้งาน : " . $user_displayname . " " . $reponse_bet . "\r\n" . "💰 ยอดเงินคงเหลือ : " . $credit
+            // ];
         }
     }
 }
