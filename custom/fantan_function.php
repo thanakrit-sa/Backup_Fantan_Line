@@ -63,23 +63,8 @@ function checkbetstring($text)
 
     // $text = preg_replace('/[0-9]+/', '', $text);
     // $code = preg_replace('/[0-9]+/', '', $code);
-    $bet_string = preg_replace('/[0-9]+/', '', $text);
-
-    // return $bet_string;
-   
-        if ($bet_string == "1a") {
-            $bet_string = "sdfs";
-        } else if ($bet_string == "2") {
-            $bet_string = "2";
-        } else if ($bet_string == "3") {
-            $bet_string = "3";
-        } else if ($bet_string == "ม") {
-            $bet_string = "มังกร";
-        } else {
-            $bet_string = false;
-        }
-
-        return $bet_string;
+    $bet_string  = preg_replace("/[^0-9]/", "", $text);
+    return $bet_string;
 }
 
 
