@@ -15,7 +15,8 @@ foreach ($events['events'] as $event) {
 
     $userID = $event['source']['userId'];
     $groupID = $event['source']['groupId'];
-    $text = $event['message']['text'];
+    $text1 = $event['message']['text'];
+    $text2 = $event['message']['text'];
     $replyToken = $event['replyToken'];
     $text_forcheck_string = $text;
     $text_forcheck_number = $text;
@@ -47,8 +48,8 @@ foreach ($events['events'] as $event) {
 
             $bet_type = "single";
 
-            $bet_string = checkbetstring($text);
-            $bet_value = checkbetvalue($text);
+            $bet_string = checkbetstring($text1);
+            $bet_value = checkbetvalue($text2);
             // $bet_after = checkbetvalueAfter($text2);
 
             if ($bet_string == "ข้อมูล") {
