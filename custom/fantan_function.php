@@ -72,13 +72,13 @@ function checkbetstring($text)
     } else {
 
         if ($bet_string == "1") {
-            $bet_string = "1=";
+            $bet_string = "1";
         } else if ($bet_string == "2") {
-            $bet_string = "2=";
+            $bet_string = "2";
         } else if ($bet_string == "3") {
-            $bet_string = "3=";
+            $bet_string = "3";
         } else if ($bet_string == "4") {
-            $bet_string = "4=";
+            $bet_string = "4";
         } else {
             $bet_string = false;
         }
@@ -88,11 +88,11 @@ function checkbetstring($text)
 }
 
 
-function checkbetvalueBefore($text1)
+function checkbetvalue($text)
 {
 
-    $bet_before  = preg_replace("/[^0-9]/", "", $text1);
-    return $bet_before;
+    $bet_value  = preg_replace("/[^0-9]/", "", $text);
+    return $bet_value;
 }
 function checkbetvalueAfter($text2)
 {
