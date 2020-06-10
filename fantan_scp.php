@@ -84,7 +84,7 @@ foreach ($events['events'] as $event) {
                 //         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                 //     ];
                 // }
-                $reponse_bet = $arrKeywords[0] . "\r\n" . $arrKeywords[1] . "\r\n" . $element;
+                $reponse_bet = $element[$i] . "\r\n" ;
                 $i++;
             }
 
