@@ -64,16 +64,15 @@ foreach ($events['events'] as $event) {
             $bet_type = "multiple";
             $arrKeywords = explode("/", $text);
             $i = 0;
-            // foreach ($arrKeywords as $element) {
+            foreach ($arrKeywords as $element) {
 
-            //     $i++;
-                
-            //     $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
-            // }
-            $messages = [
-                'type' => 'text',
-                'text' => "hello"
-            ];
+                $i++;
+                $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
+                $messages = [
+                    'type' => 'text',
+                    'text' => $reponse_bet
+                ];
+            }
         }
     }
 }
