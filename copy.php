@@ -94,60 +94,9 @@ foreach ($events['events'] as $event) {
                 $bet_code = $code[1];
 
 
-                // echo $bet_string;
-                if (!$bet_string) {
-
-                    $element_reponse = '# ' . $i . ' รูปแบบการเดิมพันของท่านไม่ถูกต้อง';
-                } else if (!is_numeric($bet_value)) {
-
-
-                    $element_reponse = '# ' . $i . ' ยอดเงินเดิมพันไม่ถูกต้อง';
-                } else {
-                    $ch = curl_init('http://e-sport.in.th/ssdev/dt/dashboard/api/user_test/profile/' . $userID);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-                    $result = curl_exec($ch);
-                    curl_close($ch);
-                    $resultData = json_decode($result, true);
-                    $data = $resultData['data'];
-                    $user_id = $data['id'];
-                    $credit = $data['credit'];
-
-                    $data = array(
-                        "user_id" => $user_id,
-                        "user_lineid" => $userID,
-                        "user_displayname" => $user_displayname,
-                        "bet_text" => $bet_text,
-                        "value" => $bet_value,
-                        "bet_code" => $bet_code
-                    );
-
-                    $request = "";
-
-                    foreach ($data as $key => $val) {
-                        $request .= $key . "=" . $val . "&";
-                    }
-
-                    $request = rtrim($request, "&");
-
-                    $url = 'http://e-sport.in.th/ssdev/dt/dashboard/api/bet_test/logbet_create';
-
-                    $ch = curl_init();
-
-                    curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-                    $response = curl_exec($ch);
-                    curl_close($ch);
-
-                    echo $response;
-
+           
                     $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
-                }
+                
 
 
                 $reponse_bet = $reponse_bet . "\n" . $element_reponse;
