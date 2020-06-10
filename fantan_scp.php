@@ -18,7 +18,7 @@ foreach ($events['events'] as $event) {
 
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-        $split_slash_count = substr_count($text, "\n");
+        $split_slash_count = substr_count($text, "/");
 
         if ($split_slash_count == 0) {
 
