@@ -70,7 +70,7 @@ foreach ($events['events'] as $event) {
                     $bet_text = $bet_data[0];
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
-                        $res_bet = $bet_text . $bet_value;
+                        $res_bet = $bet_text . "\r\n" . $bet_value;
                     } else {
                         $messages = [
                             'type' => 'text',
