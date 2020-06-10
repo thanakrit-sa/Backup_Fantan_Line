@@ -73,7 +73,7 @@ foreach ($events['events'] as $event) {
                     if ($bet_text >= 1 && $bet_text <= 4) {
                         $res_bet = "#" . $i . " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท " . "\r\n";
                     } else {
-                        $res_bet = "รูปแบบการเดิมพันของท่านไม่ถูกต้อง";
+                        $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
                     }
                 } else if (strpos($element, "/") == true) {
                     $bet_data = explode("/", $element);
@@ -82,10 +82,10 @@ foreach ($events['events'] as $event) {
                     if ($bet_text >= 1 && $bet_text <= 4) {
                         $res_bet = "#" . $i . " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท " . "\r\n";
                     } else {
-                        $res_bet = "รูปแบบการเดิมพันของท่านไม่ถูกต้อง";
+                        $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
                     }
                 } else {
-                    $res_bet = "รูปแบบการเดิมพันของท่านไม่ถูกต้อง";
+                    $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
                 }
                 $reponse_bet = $reponse_bet . $res_bet;
                 $i++;
