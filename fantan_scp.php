@@ -64,22 +64,14 @@ foreach ($events['events'] as $event) {
             $bet_type = "multiple";
             $arrKeywords = explode("\n", $text);
             $i = 0;
-            // foreach ($arrKeywords as $element) {
-
-            //     $i++;
-            //     $bet_string = checkbetstring($element, $code);
-            //     $bet_value = checkbetvalue($element);
-            //     $code = explode("/", $bet_string);
-            //     $bet_text = $code[0];
-            //     $bet_code = $code[1];
-            //     $element_reponse = '# ' . $i ;
-
-            //     $reponse_bet = $reponse_bet . "\n" . $element_reponse;
-            // }
+            foreach ($arrKeywords as $element) {
+                $reponse_bet = $reponse_bet . $i;
+                $i++;
+            }
 
             $messages = [
                 'type' => 'text',
-                'text' => $arrKeywords[0] . $arrKeywords[1] . $arrKeywords[2]
+                'text' => $arrKeywords[0] . $arrKeywords[1] . $arrKeywords[2] . $reponse_bet
             ];
         }
     }
