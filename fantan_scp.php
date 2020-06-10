@@ -62,7 +62,7 @@ foreach ($events['events'] as $event) {
 
             $reponse_bet = '';
             $bet_type = "multiple";
-            $arrKeywords = explode("", $text);
+            $arrKeywords = explode("/", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
                 if (strpos($text, "=") == true) {
