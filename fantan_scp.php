@@ -18,7 +18,7 @@ foreach ($events['events'] as $event) {
 
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-        $split_slash_count = substr_count($text, "/");
+        $split_slash_count = substr_count($text, "\n");
 
         if ($split_slash_count == 0) {
 
@@ -59,20 +59,10 @@ foreach ($events['events'] as $event) {
                 ];
             }
         } else if ($split_slash_count > 0) {
-
-            $reponse_bet = '';
-            $bet_type = "multiple";
-            $arrKeywords = explode("/", $text);
-            $i = 0;
-            foreach ($arrKeywords as $element) {
-
-                $i++;
-                $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
-                $messages = [
-                    'type' => 'text',
-                    'text' => "hello"
-                ];
-            }
+            $messages = [
+                'type' => 'text',
+                'text' => "รูปแบบการ"
+            ];
         }
     }
 }
