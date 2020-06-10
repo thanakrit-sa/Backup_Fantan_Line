@@ -61,7 +61,6 @@ foreach ($events['events'] as $event) {
         } else if ($split_slash_count > 0) {
 
             $reponse_bet = '';
-            $res_bet = '';
             $bet_type = "multiple";
             $arrKeywords = explode("\n", $text);
             $i = 0;
@@ -71,7 +70,7 @@ foreach ($events['events'] as $event) {
                     $bet_text = $bet_data[0];
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
-                        $res_bet = $bet_text . "\r\n" . $bet_value;
+                        $res_bet = $i;
                     } else {
                         $messages = [
                             'type' => 'text',
