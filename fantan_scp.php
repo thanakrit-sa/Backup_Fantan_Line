@@ -102,7 +102,7 @@ foreach ($events['events'] as $event) {
                         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
-                $reponse_bet = $reponse_bet . "\n" . $element_reponse;
+                $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
             }
             $messages = [
                 'type' => 'text',
