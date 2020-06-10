@@ -61,6 +61,7 @@ foreach ($events['events'] as $event) {
         } else if ($split_slash_count > 0) {
 
             $reponse_bet = '';
+            $res_bet = '';
             $bet_type = "multiple";
             $arrKeywords = explode("\n", $text);
             $i = 0;
