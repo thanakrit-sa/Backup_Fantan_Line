@@ -44,7 +44,7 @@ foreach ($events['events'] as $event) {
                 if ($bet_text >= 1 && $bet_text <= 4) {
                     $messages = [
                         'type' => 'text',
-                        'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                        'text' => " แทง/เดิมพันเลข " . " จำนวน " . $bet_value . " บาท "
                     ];
                 } else {
                     $messages = [
