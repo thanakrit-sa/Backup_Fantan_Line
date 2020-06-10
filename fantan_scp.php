@@ -62,7 +62,7 @@ foreach ($events['events'] as $event) {
 
             $reponse_bet = '';
             $bet_type = "multiple";
-            $arrKeywords = explode("/", $text);
+            $arrKeywords = explode("\n", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
                 if (strpos($text, "=") == true) {
@@ -71,7 +71,7 @@ foreach ($events['events'] as $event) {
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
                         // $res_bet = $bet_value . "\r\n";
-                        $res_bet = "#" . $i . " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท " . "\r\n" ;
+                        $res_bet = "#" . $i . " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท ";
                     } else { 
                         $messages = [
                             'type' => 'text',
@@ -84,7 +84,7 @@ foreach ($events['events'] as $event) {
                         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
-                $reponse_bet = $reponse_bet . "\r\n" . $res_bet;
+                $reponse_bet = $reponse_bet . $res_bet;
                 $i++;
             }
 
