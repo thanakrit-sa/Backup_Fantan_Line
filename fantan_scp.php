@@ -70,7 +70,7 @@ foreach ($events['events'] as $event) {
                 $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
                 $messages = [
                     'type' => 'text',
-                    'text' => $reponse_bet
+                    'text' => "hello"
                 ];
             }
         }
