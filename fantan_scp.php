@@ -71,7 +71,7 @@ foreach ($events['events'] as $event) {
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
                         // $res_bet = $bet_value . "\r\n";
-                        $res_bet = "#" . $i . " แทง " . $bet_data[0] . " จำนวน " . $bet_data[1] . " บาท ";
+                        $res_bet = "#" . $i . " แทง " . " จำนวน " . $bet_data[1] . " บาท ";
                     } else { 
                         $messages = [
                             'type' => 'text',
