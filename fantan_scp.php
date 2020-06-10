@@ -65,13 +65,13 @@ foreach ($events['events'] as $event) {
             $arrKeywords = explode("\n", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
-                $reponse_bet = $reponse_bet . $i;
+                $reponse_bet = $reponse_bet . $bet_text . $bet_value . $i;
                 $i++;
             }
 
             $messages = [
                 'type' => 'text',
-                'text' => $arrKeywords[0] . $arrKeywords[1] . $arrKeywords[2] . $reponse_bet
+                'text' => $reponse_bet
             ];
         }
     }
