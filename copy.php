@@ -78,7 +78,7 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             }
-        } else if ($split_slash_count > 0) {
+        } else {
 
             $reponse_bet = '';
             $bet_type = "multiple";
