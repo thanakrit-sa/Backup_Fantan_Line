@@ -65,13 +65,13 @@ foreach ($events['events'] as $event) {
             $arrKeywords = explode("\n", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
-                if (strpos($text, "=") == true) {
-                    $bet_data = explode("=", $text);
+                if (strpos($element, "=") == true) {
+                    $bet_data = explode("=", $element);
                     $bet_text = $bet_data[0];
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
                         // $res_bet = $bet_value . "\r\n";
-                        $res_bet = "#" . $i . " แทง " . " จำนวน " . $bet_data[1] . " บาท ";
+                        $res_bet = "#" . $i . " แทง " . $bet_text . " จำนวน " . $bet_value . " บาท ";
                     } else { 
                         $messages = [
                             'type' => 'text',
