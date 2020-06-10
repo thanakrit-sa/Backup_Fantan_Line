@@ -18,7 +18,7 @@ foreach ($events['events'] as $event) {
 
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-        $split_slash_count = substr_count($text, "\n");
+        $split_slash_count = substr_count($text, "/");
 
         if ($split_slash_count == 0) {
 
@@ -62,51 +62,17 @@ foreach ($events['events'] as $event) {
 
             $reponse_bet = '';
             $bet_type = "multiple";
-            $arrKeywords = explode("\n", $text);
+            $arrKeywords = explode("/", $text);
             $i = 0;
-            foreach ($arrKeywords as $element) {
+            // foreach ($arrKeywords as $element) {
 
-                $i++;
-                if (strpos($text, "=") == true) {
-                    $bet_data = explode("=", $text);
-                    $bet_text = $bet_data[0];
-                    $bet_value = $bet_data[1];
-                    if ($bet_text >= 1 && $bet_text <= 4) {
-                        $messages = [
-                            'type' => 'text',
-                            'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
-                        ];
-                    } else {
-                        $messages = [
-                            'type' => 'text',
-                            'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                        ];
-                    }
-                } else if (strpos($text, "/") == true) {
-                    $bet_data = explode("/", $text);
-                    $bet_text = $bet_data[0];
-                    $bet_value = $bet_data[1];
-                    if ($bet_text >= 1 && $bet_text <= 4) {
-                        
-                        $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
-
-                    } else {
-                        $messages = [
-                            'type' => 'text',
-                            'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                        ];
-                    }
-                } else {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                    ];
-                }
-                $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
-            }
+            //     $i++;
+                
+            //     $reponse_bet = $reponse_bet . "\r\n" . $element_reponse;
+            // }
             $messages = [
                 'type' => 'text',
-                'text' => $reponse_bet
+                'text' => "hello"
             ];
         }
     }
