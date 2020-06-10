@@ -59,9 +59,35 @@ foreach ($events['events'] as $event) {
                 ];
             }
         } else if ($split_slash_count > 0) {
+
+            $reponse_bet = '';
+            $bet_type = "multiple";
+            $arrKeywords = explode("/", $text);
+            $i = 0;
+            foreach ($arrKeywords as $element) {
+
+                $i++;
+                $bet_string = checkbetstring($element, $code);
+                $bet_value = checkbetvalue($element);
+                $code = explode("/", $bet_string);
+                $bet_text = $code[0];
+                $bet_code = $code[1];
+
+
+                
+         
+
+                    $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
+                
+
+
+                $reponse_bet = $reponse_bet . "\n" . $element_reponse;
+            }
+
+
             $messages = [
                 'type' => 'text',
-                'text' => "รูปแบบการ"
+                'text' => " ชื่อผู้ใช้งาน : " . $user_displayname . " " . $reponse_bet . "\r\n" . "💰 ยอดเงินคงเหลือ : " . $credit
             ];
         }
     }
