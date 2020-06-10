@@ -70,10 +70,7 @@ foreach ($events['events'] as $event) {
                     $bet_text = $bet_data[0];
                     $bet_value = $bet_data[1];
                     if ($bet_text >= 1 && $bet_text <= 4) {
-                        $messages = [
-                            'type' => 'text',
-                            'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
-                        ];
+                        $res_bet = $bet_text . $bet_value;
                     } else {
                         $messages = [
                             'type' => 'text',
@@ -86,7 +83,7 @@ foreach ($events['events'] as $event) {
                         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
-                $reponse_bet = $reponse_bet . $bet_text . $bet_value . $i;
+                $reponse_bet = $reponse_bet . $res_bet . $i;
                 $i++;
             }
 
