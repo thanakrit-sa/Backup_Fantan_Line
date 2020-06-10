@@ -65,6 +65,27 @@ foreach ($events['events'] as $event) {
             $arrKeywords = explode("\n", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
+                if (strpos($text, "=") == true) {
+                    $bet_data = explode("=", $text);
+                    $bet_text = $bet_data[0];
+                    $bet_value = $bet_data[1];
+                    if ($bet_text >= 1 && $bet_text <= 4) {
+                        $messages = [
+                            'type' => 'text',
+                            'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                        ];
+                    } else {
+                        $messages = [
+                            'type' => 'text',
+                            'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
+                        ];
+                    }
+                } else {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
+                    ];
+                }
                 $reponse_bet = $reponse_bet . $bet_text . $bet_value . $i;
                 $i++;
             }
