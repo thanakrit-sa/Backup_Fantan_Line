@@ -62,7 +62,7 @@ foreach ($events['events'] as $event) {
 
             $reponse_bet = '';
             $bet_type = "multiple";
-            $arrKeywords = explode("/", $text);
+            $arrKeywords = explode("\n", $text);
             $i = 0;
             foreach ($arrKeywords as $element) {
 
@@ -77,7 +77,7 @@ foreach ($events['events'] as $event) {
                 
          
 
-                    $element_reponse = '# ' . $i . ' แทง > ' . $bet_text . " จำนวน " . $bet_value;
+                    $element_reponse = '# ' . $i ;
                 
 
 
