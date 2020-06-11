@@ -71,7 +71,7 @@ foreach ($events['events'] as $event) {
                     $data = array(
                         "user_displayname" => "test",
                         "fullname" => "tet",
-                        "user_lineid" => "Ua582d60103c545097c800934d714246b",
+                        "user_lineid" => $userID,
                     );
 
                     $data_register = json_encode($data);
