@@ -55,7 +55,7 @@ foreach ($events['events'] as $event) {
             } else if ($text == "play") {
                 $messages = [
                     'type' => 'text',
-                    'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                    'text' => " แทง/เดิมพันเลข "
                 ];
             } else {
                 $messages = [
