@@ -65,12 +65,12 @@ foreach ($events['events'] as $event) {
                 if ($line_id == $userID) {
                     $messages = [
                         'type' => 'text',
-                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้ว"
+                        'text' => "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้ว"
                     ];
                 } else {
                     $data = array(
-                        "user_displayname" => "test",
-                        "fullname" => "tet",
+                        "user_displayname" => $user_displayname,
+                        "fullname" => $user_displayname,
                         "user_lineid" => $userID,
                     );
 
@@ -88,7 +88,7 @@ foreach ($events['events'] as $event) {
 
                     $messages = [
                         'type' => 'text',
-                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "✅ ทำการลงทะเบียนสำเร็จ ✅" . "\r\n"
+                        'text' => "🥺 ทำการลงทะเบียนสำเร็จ"
                     ];
                 }
             } else {
