@@ -53,9 +53,27 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else if ($text == "play") {
+                $data = array(
+                    "user_displayname" => "test",
+                    "fullname" => "test",
+                    "user_lineid" => "test",
+                );
+
+                $data_register = json_encode($data);
+
+                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/register');
+
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_register);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+                $result = curl_exec($ch);
+                curl_close($ch);
+
                 $messages = [
                     'type' => 'text',
-                    'text' => " แทง/เดิมพันเลข "
+                    'text' => $result . "\r\n" . $data_register
                 ];
             } else {
                 $messages = [
