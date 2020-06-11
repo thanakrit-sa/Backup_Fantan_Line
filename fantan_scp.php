@@ -69,8 +69,8 @@ foreach ($events['events'] as $event) {
                     ];
                 } else {
                     $data = array(
-                        "user_displayname" => $user_displayname,
-                        "fullname" => $user_displayname,
+                        "user_displayname" => "test",
+                        "fullname" => "tet",
                         "user_lineid" => "Ua582d60103c545097c800934d714246b",
                     );
 
