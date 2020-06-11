@@ -52,6 +52,11 @@ foreach ($events['events'] as $event) {
                         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
+            } else if ($text == "play") {
+                $messages = [
+                    'type' => 'text',
+                    'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
+                ];
             } else {
                 $messages = [
                     'type' => 'text',
