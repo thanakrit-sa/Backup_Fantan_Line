@@ -53,28 +53,44 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else if ($text == "play") {
-                $data = array(
-                    "user_displayname" => "test",
-                    "fullname" => "test",
-                    "user_lineid" => "test",
-                );
-
-                $data_register = json_encode($data);
-
-                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/register');
-
+                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_register);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
                 $result = curl_exec($ch);
                 curl_close($ch);
+                $resultData = json_decode($result, true);
+                $data = $resultData['data'];
+                $line_id = $data['user_lineid'];
+                if ($line_id == $userID) {
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้ว"
+                    ];
+                } else {
+                    $data = array(
+                        "user_displayname" => $user_displayname,
+                        "fullname" => $user_displayname,
+                        "user_lineid" => "Ua582d60103c545097c800934d714246b",
+                    );
 
-                $messages = [
-                    'type' => 'text',
-                    'text' => $result . "\r\n" . $data_register
-                ];
+                    $data_register = json_encode($data);
+
+                    $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/register');
+
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_register);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+                    $result = curl_exec($ch);
+                    curl_close($ch);
+
+                    $messages = [
+                        'type' => 'text',
+                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "✅ ทำการลงทะเบียนสำเร็จ ✅" . "\r\n"
+                    ];
+                }
             } else {
                 $messages = [
                     'type' => 'text',
