@@ -52,6 +52,11 @@ foreach ($events['events'] as $event) {
                         'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
                     ];
                 }
+            } else if ($text == "id") {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "UserID : " . $userID . "\r\n" . "GroupID : " . $groupID
+                ];
             } else if ($text == "play") {
                 $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
