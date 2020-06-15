@@ -40,10 +40,10 @@ foreach ($events['events'] as $event) {
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-                a($text,$res);
+                $response = a($text,$res);
                 $messages = [
                     'type' => 'text',
-                    'text' => $res
+                    'text' => $response
                 ];
             } else if (strpos($text, "/") == true) {
                 $bet_data = explode("/", $text);
