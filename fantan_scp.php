@@ -20,7 +20,7 @@ foreach ($events['events'] as $event) {
 
         $split_slash_count = substr_count($text, "\n");
 
-function a($text) {
+function a($text,$res) {
         $bet_data = explode("=", $text);
         $bet_text = $bet_data[0];
         $bet_value = $bet_data[1];
@@ -38,7 +38,7 @@ function a($text) {
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-                a($text);
+                a($text,$res);
                 $messages = [
                     'type' => 'text',
                     'text' => $res
