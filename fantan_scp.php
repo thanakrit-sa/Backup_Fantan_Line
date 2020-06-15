@@ -30,7 +30,7 @@ function checkSymbol_Bet($text)
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             
-            if ($data_split[0] >= 1 && $data_split[0] <= 6) {
+            if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $text = "การเดิมพัน";
             } else {
                 $text = "การเดิมพันของท่านไม่ถูกต้อง";
