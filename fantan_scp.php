@@ -31,7 +31,7 @@ function checkSymbol_Bet($text)
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textSlash;
-                $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+                $text = " แทง/เดิมพันเลข " . $bet_textSlash . "\r\n" . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
@@ -47,7 +47,7 @@ function checkSymbol_Bet($text)
             $data_split = str_split($bet_textEqual);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textEqual;
-                $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
+                $text = " แทง/เดิมพันเลข " . $bet_textEqual . "\r\n" . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
@@ -135,8 +135,8 @@ foreach ($events['events'] as $event) {
                     ];
                 } else {
                     $data = array(
-                        "user_displayname" => "Spie",
-                        "fullname" => "Spie",
+                        "user_displayname" => $user_displayname,
+                        "fullname" => $user_displayname,
                         "user_lineid" => $userID,
                     );
 
@@ -161,7 +161,7 @@ foreach ($events['events'] as $event) {
                 $response = checkSymbol_Bet($text);
                 $messages = [
                     'type' => 'text',
-                    'text' => $response
+                    'text' => $user_displayname . "\r\n" . $response
                 ];
             }
         } else if ($split_slash_count > 0) {
@@ -179,7 +179,7 @@ foreach ($events['events'] as $event) {
 
             $messages = [
                 'type' => 'text',
-                'text' => $reponse_bet
+                'text' => $user_displayname . "\r\n" . $reponse_bet
             ];
         }
     }
