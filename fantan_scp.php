@@ -33,10 +33,10 @@ function checkSymbol_Bet($text)
                 $bet_code = $bet_textSlash;
                 $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
-                $text = "การเดิมพันของท่านไม่ถูกต้อง";
+                $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
         } else {
-            $text = "การเดิมพันของท่านไม่ถูกต้อง";
+            $text = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
@@ -45,7 +45,6 @@ function checkSymbol_Bet($text)
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else {
-        $text = "การเดิมพันของท่านไม่ถูกต้อง";
     }
 
     return $text;
