@@ -20,23 +20,23 @@ foreach ($events['events'] as $event) {
 
         $split_slash_count = substr_count($text, "\n");
 
-        function a($text)
-        {
-            $bet_data = explode("=", $text);
-            $bet_text = $bet_data[0];
-            $bet_value = $bet_data[1];
-            if ($bet_text >= 1 && $bet_text <= 4) {
-                $messages = [
-                    'type' => 'text',
-                    'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
-                ];
-            } else {
-                $messages = [
-                    'type' => 'text',
-                    'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                ];
-            }
+function a($text) {
+        $bet_data = explode("=", $text);
+        $bet_text = $bet_data[0];
+        $bet_value = $bet_data[1];
+        if ($bet_text >= 1 && $bet_text <= 4) {
+            $messages = [
+                'type' => 'text',
+                'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
+            ];
+        } else {
+            $messages = [
+                'type' => 'text',
+                'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
+            ];
         }
+    }
+
 
         if ($split_slash_count == 0) {
 
