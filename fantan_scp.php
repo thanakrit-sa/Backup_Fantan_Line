@@ -9,7 +9,7 @@ function checkSymbol_Bet($text)
     $bet_slash = explode("/", $text);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
-    $bet_count = count($bet_textSlash);
+    $bet_count = count($bet_equal[0]);
 
     #Check Bet_Code
     if ($bet_textEqual == 1 || $bet_textSlash == 1) {
@@ -31,7 +31,7 @@ function checkSymbol_Bet($text)
         } else if (count($bet_textSlash) == 3) {
             $text = " แทง/เดิมพันเลข ";
         } else {
-            $text = "การเดิมพันของท่านไม่ถูกต้อง" . $bet_slash[0];
+            $text = "การเดิมพันของท่านไม่ถูกต้อง" . $bet_count;
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
