@@ -9,13 +9,18 @@ function checkSymbol($text, $res)
     $bet_textSlash = $bet_slash[0];
     $bet_valueEqual = $bet_equal[1];
     $bet_valueSlash = $bet_slash[1];
-    if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-        $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
-    } else if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-        $res = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
+    if (strpos($text, "=") == true || strpos($text, "/") == true) {
+        if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
+            $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
+        } else if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
+            $res = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
+        } else {
+            $res = "การเดิมพันของท่านไม่ถูกต้อง";
+        }
     } else {
         $res = "การเดิมพันของท่านไม่ถูกต้อง";
     }
+
     return $res;
 }
 
@@ -40,19 +45,7 @@ foreach ($events['events'] as $event) {
 
         if ($split_slash_count == 0) {
 
-            if (strpos($text, "=") == true) {
-                $response = checkSymbol($text, $res);
-                $messages = [
-                    'type' => 'text',
-                    'text' => $response
-                ];
-            } else if (strpos($text, "/") == true) {
-                $response = checkSymbol($text, $res);
-                $messages = [
-                    'type' => 'text',
-                    'text' => $response
-                ];
-            } else if ($text == "id") {
+            if ($text == "id") {
                 $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -127,9 +120,10 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else {
+                $response = checkSymbol($text, $res);
                 $messages = [
                     'type' => 'text',
-                    'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
+                    'text' => $response
                 ];
             }
         } else if ($split_slash_count > 0) {
