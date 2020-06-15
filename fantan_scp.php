@@ -4,10 +4,15 @@ include('./config.php');
 function checkSymbol($text, $res)
 {
     $bet_equal = explode("=", $text);
+    $bet_slash = explode("/", $text);
     $bet_textEqual = $bet_equal[0];
+    $bet_textSlash = $bet_slash[0];
     $bet_valueEqual = $bet_equal[1];
+    $bet_valueSlash = $bet_slash[1];
     if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
         $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
+    } else if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
+        $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueSlash . " บาท ";
     } else {
         $res = "การเดิมพันของท่านไม่ถูกต้อง";
     }
@@ -42,20 +47,11 @@ foreach ($events['events'] as $event) {
                     'text' => $response
                 ];
             } else if (strpos($text, "/") == true) {
-                $bet_data = explode("/", $text);
-                $bet_text = $bet_data[0];
-                $bet_value = $bet_data[1];
-                if ($bet_text >= 1 && $bet_text <= 4) {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
-                    ];
-                } else {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                    ];
-                }
+                $response = checkSymbol($text, $res);
+                $messages = [
+                    'type' => 'text',
+                    'text' => $response
+                ];
             } else if ($text == "id") {
                 $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
