@@ -13,20 +13,26 @@ function checkSymbol($text)
     #Check Bet_Code
     if ($bet_textEqual == 1 || $bet_textSlash == 1) {
         $bet_code = "1";
+    } else if ($bet_textEqual == 2 || $bet_textSlash == 2) {
+        $bet_code = "2";
+    } else if ($bet_textEqual == 3 || $bet_textSlash == 3) {
+        $bet_code = "3";
+    } else if ($bet_textEqual == 4 || $bet_textSlash == 4) {
+        $bet_code = "4";
     } else {
-        $bet_code = "Error";
+        $bet_code = "Bet_Code Error";
     }
 
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4 || strpos($text, "=") == true) {
-            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . $bet_code;
+            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else {
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
+            $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else {
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
