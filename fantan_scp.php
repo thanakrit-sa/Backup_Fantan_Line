@@ -25,10 +25,7 @@ function a($text) {
         $bet_text = $bet_data[0];
         $bet_value = $bet_data[1];
         if ($bet_text >= 1 && $bet_text <= 4) {
-            $messages = [
-                'type' => 'text',
-                'text' => " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท "
-            ];
+            $res = " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท ";
         } else {
             $messages = [
                 'type' => 'text',
@@ -42,6 +39,10 @@ function a($text) {
 
             if (strpos($text, "=") == true) {
                 a($text);
+                $messages = [
+                    'type' => 'text',
+                    'text' => $res
+                ];
             } else if (strpos($text, "/") == true) {
                 $bet_data = explode("/", $text);
                 $bet_text = $bet_data[0];
