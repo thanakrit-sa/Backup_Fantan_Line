@@ -9,7 +9,7 @@ function checkSymbol_Bet($text)
     $bet_slash = explode("/", $text);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
-    $bet_count = count($bet_equal[0]);
+    $bet_count = strlen($bet_equal[0]);
 
     #Check Bet_Code
     if ($bet_textEqual == 1 || $bet_textSlash == 1) {
