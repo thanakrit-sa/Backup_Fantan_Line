@@ -4,18 +4,18 @@ include('./config.php');
 function checkSymbol($text, $res)
 {
     $bet_equal = explode("=", $text);
-    $bet_slash = explode("/", $text);
     $bet_textEqual = $bet_equal[0];
-    $bet_textSlash = $bet_slash[0];
     $bet_valueEqual = $bet_equal[1];
+    $bet_slash = explode("/", $text);
+    $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
-    if (strpos($text, "=") == true) {
+    if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
             $res = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
         } else {
             $res = "การเดิมพันของท่านไม่ถูกต้อง";
         }
-    } else if (strpos($text, "/") == true) {
+    } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
             $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
         } else {
