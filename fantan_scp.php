@@ -1,7 +1,9 @@
 <?php
 include('./config.php');
 
-function checkSymbol($text, $res)
+
+
+function checkSymbol($text)
 {
     $bet_equal = explode("=", $text);
     $bet_textEqual = $bet_equal[0];
@@ -11,21 +13,21 @@ function checkSymbol($text, $res)
     $bet_valueSlash = $bet_slash[1];
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4 || strpos($text, "=") == true) {
-            $res = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
+            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
         } else {
-            $res = "การเดิมพันของท่านไม่ถูกต้อง";
+            $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
+            $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
         } else {
-            $res = "การเดิมพันของท่านไม่ถูกต้อง";
+            $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else {
-        $res = "การเดิมพันของท่านไม่ถูกต้อง";
+        $text = "การเดิมพันของท่านไม่ถูกต้อง";
     }
 
-    return $res;
+    return $text;
 }
 
 http_response_code(200);
@@ -124,7 +126,7 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else {
-                $response = checkSymbol($text, $res);
+                $response = checkSymbol($text);
                 $messages = [
                     'type' => 'text',
                     'text' => $response
