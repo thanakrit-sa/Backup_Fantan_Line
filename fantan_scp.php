@@ -1,7 +1,7 @@
 <?php
 include('./config.php');
 
-function checkSymbol_Bet($text)
+function check_Bet($text)
 {
     $bet_equal = explode("=", $text);
     $bet_textEqual = $bet_equal[0];
@@ -158,7 +158,7 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else {
-                $response = checkSymbol_Bet($text);
+                $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
                     'text' => $user_displayname . "\r\n" . $response
@@ -172,7 +172,7 @@ foreach ($events['events'] as $event) {
             $i = 1;
             foreach ($arrKeywords as $element) {
 
-                $response = checkSymbol_Bet($element);
+                $response = check_Bet($element);
                 $reponse_bet = $reponse_bet . " # " . $i . $response . "\r\n";
                 $i++;
             }
