@@ -9,6 +9,7 @@ function checkSymbol_Bet($text)
     $bet_slash = explode("/", $text);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
+    $bet_count = count($bet_textSlash);
 
     #Check Bet_Code
     if ($bet_textEqual == 1 || $bet_textSlash == 1) {
@@ -26,7 +27,7 @@ function checkSymbol_Bet($text)
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code . $bet_count;
         } else if (count($bet_textSlash) == 3) {
             $text = " แทง/เดิมพันเลข ";
         } else {
