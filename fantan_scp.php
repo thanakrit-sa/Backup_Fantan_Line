@@ -20,7 +20,7 @@ foreach ($events['events'] as $event) {
 
         $split_slash_count = substr_count($text, "\n");
 
-function a($text,$res) {
+function a($text) {
         $bet_data = explode("=", $text);
         $bet_text = $bet_data[0];
         $bet_value = $bet_data[1];
@@ -32,13 +32,14 @@ function a($text,$res) {
                 'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
             ];
         }
+        return $res;
     }
 
 
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-                a($text,$res);
+                a($text);
                 $messages = [
                     'type' => 'text',
                     'text' => $res
