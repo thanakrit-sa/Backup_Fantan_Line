@@ -227,7 +227,7 @@ foreach ($events['events'] as $event) {
             $i = 1;
             foreach ($arrKeywords as $element) {
 
-                $response = checkSymbol_Bet_Spacial($element);
+                $response = checkSymbol_Bet_Basic($element);
                 $reponse_bet = $reponse_bet . $response;
                 $i++;
             }
