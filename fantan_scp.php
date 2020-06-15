@@ -10,9 +10,7 @@ function checkSymbol($text, $res)
     $bet_valueEqual = $bet_equal[1];
     $bet_valueSlash = $bet_slash[1];
     if (strpos($text, "=") == true || strpos($text, "/") == true) {
-        if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
-        } else if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
+        if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
             $res = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
         } else {
             $res = "การเดิมพันของท่านไม่ถูกต้อง";
