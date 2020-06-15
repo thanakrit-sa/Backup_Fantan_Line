@@ -11,13 +11,13 @@ function checkSymbol_Bet($text)
     $bet_valueSlash = $bet_slash[1];
 
     #Check Bet_Code
-    if ($bet_textEqual == 1 || $bet_textSlash == 1) {
+    if (($bet_textEqual == 1 || $bet_textSlash == 1) || ($bet_textSlash == 1 || $bet_textSlash == 1)) {
         $bet_code = "1";
-    } else if ($bet_textEqual == 2 || $bet_textSlash == 2) {
+    } else if (($bet_textEqual == 2 || $bet_textSlash == 2) || ($bet_textSlash == 2 || $bet_textSlash == 2)) {
         $bet_code = "2";
-    } else if ($bet_textEqual == 3 || $bet_textSlash == 3) {
+    } else if (($bet_textEqual == 3 || $bet_textSlash == 3) || ($bet_textSlash == 3 || $bet_textSlash == 3)) {
         $bet_code = "3";
-    } else if ($bet_textEqual == 4 || $bet_textSlash == 4) {
+    } else if (($bet_textEqual == 4 || $bet_textSlash == 4) || ($bet_textSlash == 4 || $bet_textSlash == 4)) {
         $bet_code = "4";
     } else {
         $bet_code = "Bet_Code Error";
@@ -29,9 +29,8 @@ function checkSymbol_Bet($text)
             $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
-            
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                $text = "การเดิมพัน";
+                $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "การเดิมพันของท่านไม่ถูกต้อง";
             }
