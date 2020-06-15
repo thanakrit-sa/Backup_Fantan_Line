@@ -135,8 +135,8 @@ foreach ($events['events'] as $event) {
                     ];
                 } else {
                     $data = array(
-                        "user_displayname" => $user_displayname,
-                        "fullname" => $user_displayname,
+                        "user_displayname" => "Spie",
+                        "fullname" => "Spie",
                         "user_lineid" => $userID,
                     );
 
