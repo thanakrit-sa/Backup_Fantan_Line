@@ -38,7 +38,22 @@ function checkSymbol_Bet($text)
         } else if (!$bet_textSlash >= 1 && !$bet_textSlash <= 4) {
             $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
-            $text = " กรอกหมายเลขเพียง 1 ตำแหน่งในการแทงแบบปกติ " . "\r\n" . " กรอกหมายเลขเพียง 3 ตำแหน่งในการแทงแบบสเปเชียล ";
+            $text = [
+                'type' => 'text',
+                'text' => "รูปแบบการเดิมพันไม่ถูกต้อง",
+                "quickReply" => [
+                    "items" => [
+                        [
+                            "type" => "action",
+                            "action" => [
+                                "type" => "message",
+                                "label" => "คู่มือการเดิมพัน",
+                                "text" => "play"
+                            ]
+                        ]
+                    ]
+                ]
+            ];
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
@@ -54,10 +69,24 @@ function checkSymbol_Bet($text)
         } else if (!$bet_textEqual >= 1 && !$bet_textEqual <= 4) {
             $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
-            $text = " กรอกหมายเลขเพียง 1 ตำแหน่งในการแทงแบบปกติ " . "\r\n" . " กรอกหมายเลขเพียง 3 ตำแหน่งในการแทงแบบสเปเชียล ";
+            $text = [
+                'type' => 'text',
+                'text' => "รูปแบบการเดิมพันไม่ถูกต้อง",
+                "quickReply" => [
+                    "items" => [
+                        [
+                            "type" => "action",
+                            "action" => [
+                                "type" => "message",
+                                "label" => "คู่มือการเดิมพัน",
+                                "text" => "play"
+                            ]
+                        ]
+                    ]
+                ]
+            ];
         }
     } else {
-        $text = " การเดิมพันของท่านไม่ถูกต้อง";
     }
 
     return $text;
