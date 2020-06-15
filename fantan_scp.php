@@ -1,7 +1,7 @@
 <?php
 include('./config.php');
 
-function checkSymbol_Bet_Basic($text)
+function checkSymbol_Bet($text)
 {
     $bet_equal = explode("=", $text);
     $bet_textEqual = $bet_equal[0];
@@ -57,64 +57,6 @@ function checkSymbol_Bet_Basic($text)
     }
 
     return $text;
-}
-
-function checkSymbol_Bet_Spacial($element)
-{
-    $bet_equal = explode("=", $element);
-    $bet_textEqual = $bet_equal[0];
-    $bet_valueEqual = $bet_equal[1];
-    $bet_slash = explode("/", $element);
-    $bet_textSlash = $bet_slash[0];
-    $bet_valueSlash = $bet_slash[1];
-
-    #Check Bet_Code
-    if (($bet_textEqual == 1 || $bet_textSlash == 1) || ($bet_textSlash == 1 || $bet_textSlash == 1)) {
-        $bet_code = "1";
-    } else if (($bet_textEqual == 2 || $bet_textSlash == 2) || ($bet_textSlash == 2 || $bet_textSlash == 2)) {
-        $bet_code = "2";
-    } else if (($bet_textEqual == 3 || $bet_textSlash == 3) || ($bet_textSlash == 3 || $bet_textSlash == 3)) {
-        $bet_code = "3";
-    } else if (($bet_textEqual == 4 || $bet_textSlash == 4) || ($bet_textSlash == 4 || $bet_textSlash == 4)) {
-        $bet_code = "4";
-    } else {
-        $bet_code = "Bet_Code Error";
-    }
-
-    #Check Symbol
-    if (strpos($element, "/") == true) {
-        if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            $element = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
-        } else if (strlen($bet_textSlash) == 3) {
-            $data_split = str_split($bet_textSlash);
-            if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                $bet_code = $bet_textSlash;
-                $element = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
-            } else {
-                $element = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
-            }
-        } else {
-            $element = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
-        }
-    } else if (strpos($element, "=") == true) {
-        if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            $element = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
-        } else if (strlen($bet_textEqual) == 3) {
-            $data_split = str_split($bet_textEqual);
-            if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                $bet_code = $bet_textEqual;
-                $element = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
-            } else {
-                $element = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
-            }
-        } else {
-            $element = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
-        }
-    } else {
-        $element = "การเดิมพันของท่านไม่ถูกต้อง";
-    }
-
-    return $element;
 }
 
 http_response_code(200);
@@ -213,7 +155,7 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else {
-                $response = checkSymbol_Bet_Basic($text);
+                $response = checkSymbol_Bet($text);
                 $messages = [
                     'type' => 'text',
                     'text' => $response
@@ -227,7 +169,7 @@ foreach ($events['events'] as $event) {
             $i = 1;
             foreach ($arrKeywords as $element) {
 
-                $response = checkSymbol_Bet_Basic($element);
+                $response = checkSymbol_Bet($element);
                 $reponse_bet = $reponse_bet . $response;
                 $i++;
             }
