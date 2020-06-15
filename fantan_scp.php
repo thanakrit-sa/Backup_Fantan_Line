@@ -27,6 +27,8 @@ function checkSymbol_Bet($text)
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
             $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+        } else if (count($bet_textSlash) == 3) {
+            $text = " แทง/เดิมพันเลข ";
         } else {
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
