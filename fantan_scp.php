@@ -1,7 +1,7 @@
 <?php
 include('./config.php');
 
-function checkSymbol($text)
+function checkSymbol_Bet($text)
 {
     $bet_equal = explode("=", $text);
     $bet_textEqual = $bet_equal[0];
@@ -139,7 +139,7 @@ foreach ($events['events'] as $event) {
                     ];
                 }
             } else {
-                $response = checkSymbol($text);
+                $response = checkSymbol_Bet($text);
                 $messages = [
                     'type' => 'text',
                     'text' => $response
