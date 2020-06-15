@@ -44,7 +44,7 @@ function checkSymbol_Bet($text)
         } else if (strlen($bet_textEqual) == 3) {
             $data_split = str_split($bet_textEqual);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                $bet_code = $bet_textSlash;
+                $bet_code = $bet_textEqual;
                 $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
