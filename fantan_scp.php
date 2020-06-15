@@ -38,7 +38,7 @@ function checkSymbol_Bet($text)
         } else if (!$bet_textSlash >= 1 && !$bet_textSlash <= 4) {
             $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
-            $text = "การเดิมพันไม่ถูกต้อง" . "\r\n" . "พิมพ์ step ดูวิธีการเดิมพัน";
+            $text = " การเดิมพันไม่ถูกต้อง" . "\r\n" . "พิมพ์ step ดูวิธีการเดิมพัน";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
@@ -54,7 +54,7 @@ function checkSymbol_Bet($text)
         } else if (!$bet_textEqual >= 1 && !$bet_textEqual <= 4) {
             $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
-            $text = "การเดิมพันไม่ถูกต้อง" . "\r\n" . "พิมพ์ step ดูวิธีการเดิมพัน";
+            $text = " การเดิมพันไม่ถูกต้อง" . "\r\n" . "พิมพ์ step ดูวิธีการเดิมพัน";
         }
     } else {
     }
