@@ -1,8 +1,6 @@
 <?php
 include('./config.php');
 
-
-
 function checkSymbol($text)
 {
     $bet_equal = explode("=", $text);
@@ -11,9 +9,18 @@ function checkSymbol($text)
     $bet_slash = explode("/", $text);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
+
+    #Check Bet_Code
+    if ($bet_textEqual == 1 || $bet_textSlash == 1) {
+        $bet_code = "1";
+    } else {
+        $bet_code = "Error";
+    }
+
+    #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4 || strpos($text, "=") == true) {
-            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท ";
+            $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . $bet_code;
         } else {
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
