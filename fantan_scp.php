@@ -26,12 +26,12 @@ function checkSymbol_Bet($text)
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            $text = "แทง/เดิมพันเลข " . $bet_textSlash . "\r\n" . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            $text = "แทง/เดิมพันเลข " . $bet_textSlash . "\r\n" . "จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textSlash;
-                $text = "แทง/เดิมพันเลข " . $bet_textSlash . "\r\n" . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+                $text = "แทง/เดิมพันเลข " . $bet_textSlash . "\r\n" . "จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
@@ -42,12 +42,12 @@ function checkSymbol_Bet($text)
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            $text = "แทง/เดิมพันเลข " . $bet_textEqual . "\r\n" . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
+            $text = "แทง/เดิมพันเลข " . $bet_textEqual . "\r\n" . "จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textEqual) == 3) {
             $data_split = str_split($bet_textEqual);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textEqual;
-                $text = "แทง/เดิมพันเลข " . $bet_textEqual . "\r\n" . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
+                $text = "แทง/เดิมพันเลข " . $bet_textEqual . "\r\n" . "จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
