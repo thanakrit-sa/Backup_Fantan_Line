@@ -33,10 +33,10 @@ function checkSymbol_Bet($text)
                 $bet_code = $bet_textSlash;
                 $text = " แทง/เดิมพันเลข " . $bet_textSlash . " จำนวน " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
-                $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
+                $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
         } else {
-            $text = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
+            $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
@@ -47,13 +47,13 @@ function checkSymbol_Bet($text)
                 $bet_code = $bet_textEqual;
                 $text = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
-                $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
+                $text = " การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
         } else {
-            $text = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
+            $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         }
     } else {
-        $text = "การเดิมพันของท่านไม่ถูกต้อง";
+        $text = " การเดิมพันของท่านไม่ถูกต้อง";
     }
 
     return $text;
@@ -170,7 +170,7 @@ foreach ($events['events'] as $event) {
             foreach ($arrKeywords as $element) {
 
                 $response = checkSymbol_Bet($element);
-                $reponse_bet = $reponse_bet . "#" . $i . $response . "\r\n";
+                $reponse_bet = $reponse_bet . " # " . $i . $response . "\r\n";
                 $i++;
             }
 
