@@ -170,7 +170,7 @@ foreach ($events['events'] as $event) {
             foreach ($arrKeywords as $element) {
 
                 $response = checkSymbol_Bet($element);
-                $reponse_bet = $reponse_bet . $response;
+                $reponse_bet = $reponse_bet . "#" . $i . $response . "\r\n";
                 $i++;
             }
 
