@@ -38,6 +38,7 @@ function check_Bet($text)
         } else if (!$bet_textSlash >= 1 && !$bet_textSlash <= 4) {
             $text = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
+            $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
@@ -53,8 +54,10 @@ function check_Bet($text)
         } else if (!$bet_textEqual >= 1 && !$bet_textEqual <= 4) {
             $text = "การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
+            $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
     } else {
+        $text = "การเดิมพันของท่านไม่ถูกต้อง";
     }
 
     return $text;
