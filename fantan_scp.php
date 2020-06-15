@@ -35,7 +35,9 @@ function check_Bet($text)
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
-        } else if (strlen($bet_textSlash) != 3 || strlen($bet_textSlash) != 1) {
+        } else if (strlen($bet_textSlash) != 3) {
+            $text = "การเดิมพันไม่ถูกต้อง";
+        } else if (strlen($bet_textSlash) != 1) {
             $text = "การเดิมพันไม่ถูกต้อง";
         } else {
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
