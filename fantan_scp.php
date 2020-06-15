@@ -69,22 +69,7 @@ function checkSymbol_Bet($text)
         } else if (!$bet_textEqual >= 1 && !$bet_textEqual <= 4) {
             $text = " การเดิมพันแบบปกติสามารถกรอกหมายเลขได้เพียง 1-4 เท่านั้น";
         } else {
-            $text = [
-                'type' => 'text',
-                'text' => "รูปแบบการเดิมพันไม่ถูกต้อง",
-                "quickReply" => [
-                    "items" => [
-                        [
-                            "type" => "action",
-                            "action" => [
-                                "type" => "message",
-                                "label" => "คู่มือการเดิมพัน",
-                                "text" => "play"
-                            ]
-                        ]
-                    ]
-                ]
-            ];
+            $text = "dfdsf";
         }
     } else {
     }
