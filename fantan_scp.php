@@ -173,7 +173,7 @@ foreach ($events['events'] as $event) {
             foreach ($arrKeywords as $element) {
 
                 $response = check_Bet($element);
-                $reponse_bet = $reponse_bet . " # " . $i . $response . "\r\n";
+                $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
                 $i++;
             }
 
