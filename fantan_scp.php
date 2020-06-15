@@ -1,6 +1,19 @@
 <?php
 include('./config.php');
 
+function checkSymbol($text, $res)
+{
+    $bet_equal = explode("=", $text);
+    $bet_textEqual = $bet_equal[0];
+    $bet_valueEqual = $bet_equal[1];
+    if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
+        $res = " แทง/เดิมพันเลข " . $bet_textEqual . " จำนวน " . $bet_valueEqual . " บาท ";
+    } else {
+        $res = "การเดิมพันของท่านไม่ถูกต้อง";
+    }
+    return $res;
+}
+
 http_response_code(200);
 
 date_default_timezone_set('Asia/Bangkok');
@@ -20,27 +33,10 @@ foreach ($events['events'] as $event) {
 
         $split_slash_count = substr_count($text, "\n");
 
-        function a($text,$res)
-        {
-            $bet_data = explode("=", $text);
-            $bet_text = $bet_data[0];
-            $bet_value = $bet_data[1];
-            if ($bet_text >= 1 && $bet_text <= 4) {
-                $res = " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท ";
-            } else {
-                $messages = [
-                    'type' => 'text',
-                    'text' => "รูปแบบการเดิมพันของท่านไม่ถูกต้อง"
-                ];
-            }
-            return $res;
-        }
-
-
         if ($split_slash_count == 0) {
 
             if (strpos($text, "=") == true) {
-                $response = a($text,$res);
+                $response = checkSymbol($text, $res);
                 $messages = [
                     'type' => 'text',
                     'text' => $response
