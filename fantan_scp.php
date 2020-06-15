@@ -169,28 +169,8 @@ foreach ($events['events'] as $event) {
             $i = 1;
             foreach ($arrKeywords as $element) {
 
-                if (strpos($element, "=") == true) {
-                    $bet_data = explode("=", $element);
-                    $bet_text = $bet_data[0];
-                    $bet_value = $bet_data[1];
-                    if ($bet_text >= 1 && $bet_text <= 4) {
-                        $res_bet = "#" . $i . " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท " . "\r\n";
-                    } else {
-                        $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
-                    }
-                } else if (strpos($element, "/") == true) {
-                    $bet_data = explode("/", $element);
-                    $bet_text = $bet_data[0];
-                    $bet_value = $bet_data[1];
-                    if ($bet_text >= 1 && $bet_text <= 4) {
-                        $res_bet = "#" . $i . " แทง/เดิมพันเลข " . $bet_text . " จำนวน " . $bet_value . " บาท " . "\r\n";
-                    } else {
-                        $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
-                    }
-                } else {
-                    $res_bet = "#" . $i . " รูปแบบการเดิมพันของท่านไม่ถูกต้อง ";
-                }
-                $reponse_bet = $reponse_bet . $res_bet;
+                $response = checkSymbol_Bet($text);
+                $reponse_bet = $reponse_bet . $text;
                 $i++;
             }
 
