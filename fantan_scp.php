@@ -31,7 +31,7 @@ function checkSymbol_Bet($text)
         } else if (count($bet_textSlash) == 3) {
             $text = " แทง/เดิมพันเลข ";
         } else {
-            $text = "การเดิมพันของท่านไม่ถูกต้อง";
+            $text = "การเดิมพันของท่านไม่ถูกต้อง" . $bet_count;
         }
     } else if (strpos($text, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
