@@ -58,6 +58,43 @@ function create_bet($data)
     curl_close($ch);
 }
 
+function b($bet_textSlash,$bet_valueSlash,$bet_code)
+{
+    $content = file_get_contents('php://input');
+
+    $events = json_decode($content, true);
+
+    foreach ($events['events'] as $event) {
+
+        $userID = $event['source']['userId'];
+        $groupID = $event['source']['groupId'];
+        $text = $event['message']['text'];
+        $replyToken = $event['replyToken'];
+        $user_displayname = linedisplayname($groupID, $userID);
+    }
+    $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+    $result = curl_exec($ch);
+    curl_close($ch);
+    $resultData = json_decode($result, true);
+    $data = $resultData['data'];
+    $user_id = $data['id'];
+
+    $data = array(
+        "user_id" => $user_id,
+        "user_lineid" => $userID,
+        "user_displayname" => $user_displayname,
+        "bet_text" => $bet_textSlash,
+        "value" => $bet_valueSlash,
+        "bet_code" => $bet_code
+    );
+
+    create_bet($data);
+    $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+}
+
 function check_Bet($text)
 {
     $bet_equal = explode("=", $text);
@@ -95,26 +132,7 @@ function check_Bet($text)
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-            $result = curl_exec($ch);
-            curl_close($ch);
-            $resultData = json_decode($result, true);
-            $data = $resultData['data'];
-            $user_id = $data['id'];
-
-            $data = array(
-                "user_id" => $user_id,
-                "user_lineid" => $userID,
-                "user_displayname" => $user_displayname,
-                "bet_text" => $bet_textSlash,
-                "value" => $bet_valueSlash,
-                "bet_code" => $bet_code
-            );
-
-            create_bet($data);
+            b($bet_textSlash,$bet_valueSlash,$bet_code);
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
