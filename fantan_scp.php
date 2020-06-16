@@ -156,7 +156,7 @@ foreach ($events['events'] as $event) {
 
                     $messages = [
                         'type' => 'text',
-                        'text' => "🥺 ทำการลงทะเบียนสำเร็จ" . $data_register
+                        'text' => $user_displayname . "🥺 ทำการลงทะเบียนสำเร็จ" . $data_register
                     ];
                 }
             } else {
