@@ -54,11 +54,8 @@ function create_bet($data)
     curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
     $response = curl_exec($ch);
     curl_close($ch);
-    $response_data = json_decode($response, true);
-    $response_code = $response_data['code'];
 }
 
 function check_Bet($text)
