@@ -35,20 +35,8 @@ function linedisplayname($groupID, $userID)
     }
 }
 
-function b($bet_textSlash,$bet_valueSlash,$bet_code)
+function create_bet($bet_textSlash,$bet_valueSlash,$bet_code,$userID,$user_displayname)
 {
-    $content = file_get_contents('php://input');
-
-    $events = json_decode($content, true);
-
-    foreach ($events['events'] as $event) {
-
-        $userID = $event['source']['userId'];
-        $groupID = $event['source']['groupId'];
-        $text = $event['message']['text'];
-        $replyToken = $event['replyToken'];
-        $user_displayname = linedisplayname($groupID, $userID);
-    }
     $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -126,7 +114,7 @@ function check_Bet($text)
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            b($bet_textSlash,$bet_valueSlash,$bet_code);
+            create_bet($bet_textSlash,$bet_valueSlash,$bet_code,$userID,$user_displayname);
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
