@@ -35,29 +35,6 @@ function linedisplayname($groupID, $userID)
     }
 }
 
-function create_bet($data)
-{
-    $request = "";
-
-    foreach ($data as $key => $val) {
-        $request .= $key . "=" . $val . "&";
-    }
-
-    $request = rtrim($request, "&");
-
-    $url = 'http://e-sport.in.th/ssdev/fantan/api/bet_test/logbet_create';
-
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $response = curl_exec($ch);
-    curl_close($ch);
-}
-
 function b($bet_textSlash,$bet_valueSlash,$bet_code)
 {
     $content = file_get_contents('php://input');
@@ -91,8 +68,25 @@ function b($bet_textSlash,$bet_valueSlash,$bet_code)
         "bet_code" => $bet_code
     );
 
-    create_bet($data);
-    $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+    $request = "";
+
+    foreach ($data as $key => $val) {
+        $request .= $key . "=" . $val . "&";
+    }
+
+    $request = rtrim($request, "&");
+
+    $url = 'http://e-sport.in.th/ssdev/fantan/api/bet_test/logbet_create';
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec($ch);
+    curl_close($ch);
 }
 
 function check_Bet($text)
@@ -157,7 +151,6 @@ function check_Bet($text)
                     "bet_code" => $bet_code
                 );
 
-                create_bet($data);
                 $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
