@@ -159,6 +159,18 @@ http_response_code(200);
 
 date_default_timezone_set('Asia/Bangkok');
 $current_datetime = date("Y-m-d H:i:s");
+$content = file_get_contents('php://input');
+
+$events = json_decode($content, true);
+
+foreach ($events['events'] as $event) {
+
+    $userID = $event['source']['userId'];
+    $groupID = $event['source']['groupId'];
+    $text = $event['message']['text'];
+    $replyToken = $event['replyToken'];
+    $user_displayname = linedisplayname($groupID, $userID);
+}
 
 
 if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
