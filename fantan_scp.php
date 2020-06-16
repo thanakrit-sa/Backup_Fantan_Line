@@ -77,6 +77,7 @@ foreach ($events['events'] as $event) {
     $groupID = $event['source']['groupId'];
     $text = $event['message']['text'];
     $replyToken = $event['replyToken'];
+    $user_displayname = linedisplayname($groupID, $userID);
 
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
