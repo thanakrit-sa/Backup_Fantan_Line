@@ -35,6 +35,31 @@ function linedisplayname($groupID, $userID)
     }
 }
 
+function a($data) {
+    $request = "";
+
+            foreach ($data as $key => $val) {
+                $request .= $key . "=" . $val . "&";
+            }
+
+            $request = rtrim($request, "&");
+
+            $url = 'http://e-sport.in.th/ssdev/fantan/api/bet_test/logbet_create';
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $response_data = json_decode($response, true);
+            $response_code = $response_data['code'];
+}
+
 function check_Bet($text)
 {
     $bet_equal = explode("=", $text);
@@ -91,30 +116,9 @@ function check_Bet($text)
                 "bet_code" => $bet_code
             );
 
-            $request = "";
+            $aa = a($data);
 
-            foreach ($data as $key => $val) {
-                $request .= $key . "=" . $val . "&";
-            }
-
-            $request = rtrim($request, "&");
-
-            $url = 'http://e-sport.in.th/ssdev/fantan/api/bet_test/logbet_create';
-
-            $ch = curl_init();
-
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-            $response = curl_exec($ch);
-            curl_close($ch);
-            $response_data = json_decode($response, true);
-            $response_code = $response_data['code'];
-            
-            $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            $text = $aa . "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
