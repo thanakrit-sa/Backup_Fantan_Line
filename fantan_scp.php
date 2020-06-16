@@ -138,12 +138,12 @@ foreach ($events['events'] as $event) {
                 if ($line_id == $userID) {
                     $messages = [
                         'type' => 'text',
-                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "UserID : " . $userID . "\r\n" . "ยอดเงินคงเหลือ : " . $credit . " บาท "
+                        'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "UserID : " . $userID . "\r\n" . "ยอดเงินคงเหลือ : " . $credit . " บาท "
                     ];
                 } else {
                     $messages = [
                         'type' => 'text',
-                        'text' => "ชื่อผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
+                        'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
                         "quickReply" => [
                             "items" => [
                                 [
@@ -194,14 +194,14 @@ foreach ($events['events'] as $event) {
 
                     $messages = [
                         'type' => 'text',
-                        'text' => $user_displayname . "🥺 ทำการลงทะเบียนสำเร็จ" . $data_register
+                        'text' => "ผู้ใช้งาน : " . $user_displayname . "🥺 ทำการลงทะเบียนสำเร็จ" . $data_register . "\r\n" . $result
                     ];
                 }
             } else {
                 $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
-                    'text' => $user_displayname . "\r\n" . $response
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
                 ];
             }
         } else if ($split_slash_count > 0) {
