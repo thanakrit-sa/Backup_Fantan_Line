@@ -115,12 +115,31 @@ function check_Bet($text)
             );
 
             create_bet($data);
-
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textSlash;
+                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+                $result = curl_exec($ch);
+                curl_close($ch);
+                $resultData = json_decode($result, true);
+                $data = $resultData['data'];
+                $user_id = $data['id'];
+
+                $data = array(
+                    "user_id" => $user_id,
+                    "user_lineid" => $userID,
+                    "user_displayname" => $user_displayname,
+                    "bet_text" => $bet_textSlash,
+                    "value" => $bet_valueSlash,
+                    "bet_code" => $bet_code
+                );
+
+                create_bet($data);
                 $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
