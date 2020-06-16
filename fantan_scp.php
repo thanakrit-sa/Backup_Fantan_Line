@@ -43,6 +43,18 @@ function check_Bet($text)
     $bet_slash = explode("/", $text);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
+    $content = file_get_contents('php://input');
+
+    $events = json_decode($content, true);
+
+    foreach ($events['events'] as $event) {
+
+        $userID = $event['source']['userId'];
+        $groupID = $event['source']['groupId'];
+        $text = $event['message']['text'];
+        $replyToken = $event['replyToken'];
+        $user_displayname = linedisplayname($groupID, $userID);
+    }
 
     #Check Bet_Code
     if (($bet_textEqual == 1 || $bet_textSlash == 1) || ($bet_textSlash == 1 || $bet_textSlash == 1)) {
@@ -60,7 +72,49 @@ function check_Bet($text)
     #Check Symbol
     if (strpos($text, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+            $result = curl_exec($ch);
+            curl_close($ch);
+            $resultData = json_decode($result, true);
+            $data = $resultData['data'];
+            $user_id = $data['id'];
+
+            $data = array(
+                "user_id" => $user_id,
+                "user_lineid" => $userID,
+                "user_displayname" => $user_displayname,
+                "bet_text" => $bet_textSlash,
+                "value" => $bet_valueSlash,
+                "bet_code" => $bet_code
+            );
+
+            $request = "";
+
+            foreach ($data as $key => $val) {
+                $request .= $key . "=" . $val . "&";
+            }
+
+            $request = rtrim($request, "&");
+
+            $url = 'http://e-sport.in.th/ssdev/fantan/api/bet_test/logbet_create';
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $response_data = json_decode($response, true);
+            $response_code = $response_data['code'];
+            $text = $response;
+            // $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
@@ -105,125 +159,115 @@ http_response_code(200);
 
 date_default_timezone_set('Asia/Bangkok');
 $current_datetime = date("Y-m-d H:i:s");
-$content = file_get_contents('php://input');
 
-$events = json_decode($content, true);
 
-foreach ($events['events'] as $event) {
+if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
-    $userID = $event['source']['userId'];
-    $groupID = $event['source']['groupId'];
-    $text = $event['message']['text'];
-    $replyToken = $event['replyToken'];
-    $user_displayname = linedisplayname($groupID, $userID);
+    $split_slash_count = substr_count($text, "\n");
 
-    if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+    if ($split_slash_count == 0) {
 
-        $split_slash_count = substr_count($text, "\n");
+        if ($text == "id") {
+            $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+            $result = curl_exec($ch);
+            curl_close($ch);
+            $resultData = json_decode($result, true);
+            $data = $resultData['data'];
+            $line_id = $data['user_lineid'];
+            $credit = $data['credit'];
 
-        if ($split_slash_count == 0) {
-
-            if ($text == "id") {
-                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-                $result = curl_exec($ch);
-                curl_close($ch);
-                $resultData = json_decode($result, true);
-                $data = $resultData['data'];
-                $line_id = $data['user_lineid'];
-                $credit = $data['credit'];
-
-                if ($line_id == $userID) {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "UserID : " . $userID . "\r\n" . "ยอดเงินคงเหลือ : " . $credit . " บาท "
-                    ];
-                } else {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
-                        "quickReply" => [
-                            "items" => [
-                                [
-                                    "type" => "action",
-                                    "action" => [
-                                        "type" => "message",
-                                        "label" => "สมัครสมาชิก",
-                                        "text" => "play"
-                                    ]
+            if ($line_id == $userID) {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "UserID : " . $userID . "\r\n" . "ยอดเงินคงเหลือ : " . $credit . " บาท "
+                ];
+            } else {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
+                    "quickReply" => [
+                        "items" => [
+                            [
+                                "type" => "action",
+                                "action" => [
+                                    "type" => "message",
+                                    "label" => "สมัครสมาชิก",
+                                    "text" => "play"
                                 ]
                             ]
                         ]
-                    ];
-                }
-            } else if ($text == "play") {
-                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-                $result = curl_exec($ch);
-                curl_close($ch);
-                $resultData = json_decode($result, true);
-                $data = $resultData['data'];
-                $line_id = $data['user_lineid'];
-                if ($line_id == $userID) {
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้วว"
-                    ];
-                } else {
-                    $data = array(
-                        "user_displayname" => $user_displayname,
-                        "fullname" => $user_displayname,
-                        "user_lineid" => $userID,
-                    );
-
-                    $data_register = json_encode($data);
-
-                    $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/register');
-
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_register);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
-                    $result = curl_exec($ch);
-                    curl_close($ch);
-
-                    $messages = [
-                        'type' => 'text',
-                        'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ทำการลงทะเบียนสำเร็จ"
-                    ];
-                }
-            } else {
-                $response = check_Bet($text);
-                $messages = [
-                    'type' => 'text',
-                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
+                    ]
                 ];
             }
-        } else if ($split_slash_count > 0) {
+        } else if ($text == "play") {
+            $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+            $result = curl_exec($ch);
+            curl_close($ch);
+            $resultData = json_decode($result, true);
+            $data = $resultData['data'];
+            $line_id = $data['user_lineid'];
+            if ($line_id == $userID) {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้วว"
+                ];
+            } else {
+                $data = array(
+                    "user_displayname" => $user_displayname,
+                    "fullname" => $user_displayname,
+                    "user_lineid" => $userID,
+                );
 
-            $reponse_bet = '';
-            $bet_type = "multiple";
-            $arrKeywords = explode("\n", $text);
-            $i = 1;
-            foreach ($arrKeywords as $element) {
+                $data_register = json_encode($data);
 
-                $response = check_Bet($element);
-                $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
-                $i++;
+                $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/register');
+
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_register);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+                $result = curl_exec($ch);
+                curl_close($ch);
+
+                $messages = [
+                    'type' => 'text',
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ทำการลงทะเบียนสำเร็จ"
+                ];
             }
-
+        } else {
+            $response = check_Bet($text);
             $messages = [
                 'type' => 'text',
-                'text' => $user_displayname . "\r\n" . $reponse_bet
+                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
             ];
         }
+    } else if ($split_slash_count > 0) {
+
+        $reponse_bet = '';
+        $bet_type = "multiple";
+        $arrKeywords = explode("\n", $text);
+        $i = 1;
+        foreach ($arrKeywords as $element) {
+
+            $response = check_Bet($element);
+            $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
+            $i++;
+        }
+
+        $messages = [
+            'type' => 'text',
+            'text' => $user_displayname . "\r\n" . $reponse_bet
+        ];
     }
 }
+
 
 
 
