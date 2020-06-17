@@ -316,7 +316,7 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 
             $response = check_Bet($text);
             // $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
-            $reponse_bet = $reponse_bet . " # " . $i . " " . $text . "\r\n";
+            $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
             $i++;
         }
 
