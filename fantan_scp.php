@@ -160,9 +160,9 @@ function check_Bet($element)
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
-            create_bet_slash($bet_textSlash,$bet_valueSlash,$bet_code,$userID,$user_displayname);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
                 $bet_code = $bet_textSlash;
+                create_bet_slash($bet_textSlash,$bet_valueSlash,$bet_code,$userID,$user_displayname);
                 $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
