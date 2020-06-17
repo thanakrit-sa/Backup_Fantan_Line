@@ -35,12 +35,12 @@ function linedisplayname($groupID, $userID)
     }
 }
 
-function check_Bet($text)
+function check_Bet($element)
 {
-    $bet_equal = explode("=", $text);
+    $bet_equal = explode("=", $element);
     $bet_textEqual = $bet_equal[0];
     $bet_valueEqual = $bet_equal[1];
-    $bet_slash = explode("/", $text);
+    $bet_slash = explode("/", $element);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
     $content = file_get_contents('php://input');
@@ -70,7 +70,7 @@ function check_Bet($text)
     }
 
     #Check Symbol
-    if (strpos($text, "/") == true) {
+    if (strpos($element, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
             $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textSlash) == 3) {
@@ -86,7 +86,7 @@ function check_Bet($text)
         } else {
             $text = "การเดิมพันของท่านไม่ถูกต้อง";
         }
-    } else if (strpos($text, "=") == true) {
+    } else if (strpos($element, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
             $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
         } else if (strlen($bet_textEqual) == 3) {
