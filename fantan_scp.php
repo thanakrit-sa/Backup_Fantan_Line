@@ -119,12 +119,12 @@ function create_bet_equal($bet_textEqual,$bet_valueEqual,$bet_code,$userID,$user
     curl_close($ch);
 }
 
-function check_Bet($text)
+function check_Bet($element)
 {
-    $bet_equal = explode("=", $text);
+    $bet_equal = explode("=", $element);
     $bet_textEqual = $bet_equal[0];
     $bet_valueEqual = $bet_equal[1];
-    $bet_slash = explode("/", $text);
+    $bet_slash = explode("/", $element);
     $bet_textSlash = $bet_slash[0];
     $bet_valueSlash = $bet_slash[1];
     $content = file_get_contents('php://input');
