@@ -314,9 +314,9 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
         $i = 1;
         foreach ($arrKeywords as $element) {
 
-            $response = check_Bet($element);
-            $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
-            // $reponse_bet = $reponse_bet . " # " . $i . " " . $element . "\r\n";
+            $response = check_Bet($text);
+            // $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
+            $reponse_bet = $reponse_bet . " # " . $i . " " . $text . "\r\n";
             $i++;
         }
 
