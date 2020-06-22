@@ -1,7 +1,7 @@
 <script>
     function runApp() {
         liff.getProfile().then(profile => {
-            window.location.href = "profile..php?userID=" + profile.userId;
+            window.location.href = "profile.php?userID=" + profile.userId;
         }).catch(err => console.error(err));
     }
     liff.init({
