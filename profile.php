@@ -9,16 +9,29 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 </head>
 
-<?
-    $content = file_get_contents('php://input');
-    $events = json_decode($content, true);
-
-    foreach ($events['events'] as $event) {
-        $userID = $event['source']['userId'];
+<script>
+    function runApp() {
+        liff.getProfile().then(profile => {
+            document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+            document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+        }).catch(err => console.error(err));
     }
+    liff.init({
+        liffId: "1654375936-D1bXp1Xg"
+    }, () => {
+        if (liff.isLoggedIn()) {
+            runApp()
+        } else {
+            liff.login();
+        }
+    }, err => console.error(err.code, error.message));
+</script>
+
+<?
     $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -69,6 +82,8 @@
                     <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
                 </div>
             </div>
+            <p id="userId"></p>
+            <p id="displayName"></p>
         </div>
     </div>
 </body>
