@@ -27,7 +27,7 @@
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">ไลน์ไอดี</div>
+                        <div class="input-group-text"><i class="far fa-id-card"></i></div>
                     </div>
                     <input type="text" class="form-control" placeholder="Spie">
                 </div>
