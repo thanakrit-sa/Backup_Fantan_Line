@@ -15,6 +15,12 @@
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
+        <div>
+            <label>
+                <h4>Profile</h4>
+            </label>
+        </div>
+        <br>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
                 <div class="input-group shadow">
