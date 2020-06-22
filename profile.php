@@ -17,7 +17,7 @@
         <br>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
-                <div class="input-group shadow">
+                <div class="input-group mt-3 shadow">
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-user-alt m-auto" style="font-size:30px"></i></div>
                     </div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="form-group m-0 p-0">
-                <div class="input-group">
+                <div class="input-group mt-3 shadow">
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="far fa-id-card m-auto" style="font-size:30px"></i></div>
                     </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="form-group m-0 p-0">
-                <div class="input-group">
+                <div class="input-group mt-3 shadow">
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-money-check-alt m-auto" style="font-size:30px"></i></div>
                     </div>
