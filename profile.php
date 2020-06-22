@@ -45,7 +45,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-user-alt m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="<?=$user_displayname?>">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
