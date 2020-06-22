@@ -35,7 +35,7 @@
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text" style="width:60px"><i class="far fa-coins m-auto" style="font-size:30px"></i></div>
+                        <div class="input-group-text" style="width:60px"><i class="fas fa-coins m-auto" style="font-size:30px"></i></div>
                     </div>
                     <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
                 </div>
