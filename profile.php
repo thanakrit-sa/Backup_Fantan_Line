@@ -15,9 +15,9 @@
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
-        <div align="center">
+        <div align="center" style="background-color:black">
             <label style="color: white; letter-spacing:3px; font-weight: bold">
-                <strong>Profile</strong>
+                <h4>Profile</h4>
             </label>
         </div>
         <div class="card card-body m-0">
