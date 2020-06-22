@@ -25,6 +25,7 @@
         $resultData = json_decode($result, true);
         echo $result;
         $data = $resultData['data'];
+        $user_displayname = $data['user_displayname']
         $line_id = $data['user_lineid'];
         $credit = $data['credit'];
     ?>
