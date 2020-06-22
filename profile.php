@@ -18,16 +18,16 @@
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div align="center" class="input-group-text" style="width:60px; margin:auto"><i class="fas fa-user" style="font-size:30px"></i></div>
+                    <div align="center" class="input-group-prepend">
+                        <div class="input-group-text" style="width:60px"><i class="fas fa-user" style="font-size:30px"></i></div>
                     </div>
                     <input type="text" class="form-control form-control-lg" readonly placeholder="Spie">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div align="center" class="input-group-text" style="width:60px"><i class="far fa-id-card" style="font-size:30px"></i></div>
+                    <div align="center" class="input-group-prepend">
+                        <div class="input-group-text" style="width:60px"><i class="far fa-id-card" style="font-size:30px"></i></div>
                     </div>
                     <input type="text" class="form-control form-control-lg" placeholder="Spie">
                 </div>
