@@ -23,7 +23,7 @@
                     <input type="text" class="form-control" placeholder="Spie">
                 </div>
             </div>
-            <div class="form-group my-3 p-0">
+            <div class="form-group my-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">ชื่อผู้ใช้</div>
