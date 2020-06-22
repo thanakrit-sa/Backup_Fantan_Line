@@ -18,7 +18,7 @@
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">ชื่อผู้ใช้</div>
+                        <div class="input-group-text px-5">ชื่อผู้ใช้</div>
                     </div>
                     <input type="text" class="form-control" placeholder="Spie">
                 </div>
@@ -26,7 +26,7 @@
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">ไลน์ไอดี</div>
+                        <div class="input-group-text px-5">ไลน์ไอดี</div>
                     </div>
                     <input type="text" class="form-control" placeholder="Spie">
                 </div>
