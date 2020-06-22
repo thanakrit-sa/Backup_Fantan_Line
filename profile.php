@@ -15,13 +15,13 @@
     <div class="container">
         <br>
         <div class="card card-body m-0">
-            <div class="form-group">
+            <div class="form-group m-0 p-0">
                 <label class="sr-only" for="inlineFormInputGroup">Spie</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">Username</div>
                     </div>
-                    <input type="text" class="form-control m-0 p-0" id="inlineFormInputGroup" placeholder="Username">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
                 </div>
             </div>
         </div>
