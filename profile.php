@@ -12,7 +12,9 @@
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 </head>
-<script>
+
+<body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
+    <script>
         function runApp() {
             liff.getProfile().then(profile => {
                 document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
@@ -29,7 +31,7 @@
             }
         }, err => console.error(err.code, error.message));
     </script>
-<?
+    <?
     $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -42,8 +44,6 @@
     // $line_id = $data['user_lineid'];
     // $credit = $data['credit'];
 ?>
-
-<body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
         <div align="center">
