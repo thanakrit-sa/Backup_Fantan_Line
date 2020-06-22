@@ -23,6 +23,7 @@
                 <h4 class="p-0 m-2">Id, Lineid, Balance</h4>
             </label>
         </div>
+        <br>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
                 <div class="input-group shadow">
