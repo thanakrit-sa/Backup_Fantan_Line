@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <br>
-        <div class="card card-body m-0">
+        <div class="card card-body m-0 p-0">
             <div class="form-group">
                 <label class="sr-only" for="inlineFormInputGroup">Spie</label>
                 <div class="input-group mb-2">
