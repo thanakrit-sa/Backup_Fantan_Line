@@ -17,7 +17,7 @@
         <br>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
-                <div class="input-group mb-2">
+                <div class="input-group mb-2 shadow">
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-user-alt m-auto" style="font-size:30px"></i></div>
                     </div>
