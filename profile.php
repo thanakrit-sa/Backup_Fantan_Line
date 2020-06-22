@@ -15,7 +15,7 @@
 
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <?
-        $userID = $_POST['userID'];
+        $userID = $_GET['userID'];
         echo $userID;
         // $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
         // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
