@@ -14,27 +14,21 @@
 </head>
 
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
-    <script>
-        function runApp() {
-            liff.getProfile().then(profile => {
-                document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
-                var temp_attribute_a = profile.userId;
-                temp_attribute_a = '<?php echo $user;?>';
-                document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
-            }).catch(err => console.error(err));
-        }
-        liff.init({
-            liffId: "1654375936-D1bXp1Xg"
-        }, () => {
-            if (liff.isLoggedIn()) {
-                runApp()
-            } else {
-                liff.login();
-            }
-        }, err => console.error(err.code, error.message));
-    </script>
-    <? echo $user; ?>
-
+    <?
+        $userID = $_POST['userID'];
+        echo $userID;
+        // $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+        // $result = curl_exec($ch);
+        // curl_close($ch);
+        // $resultData = json_decode($result, true);
+        // echo $result;
+        // $data = $resultData['data'];
+        // $line_id = $data['user_lineid'];
+        // $credit = $data['credit'];
+    ?>
     <div class="container">
         <br>
         <div align="center">
