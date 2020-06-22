@@ -16,7 +16,7 @@
     <div class="container">
         <br>
         <div align="center">
-            <label style="color: white; letter-spacing:2px">
+            <label style="color: white; letter-spacing:3px; font-weight: bold">
                 <h4>Profile</h4>
             </label>
         </div>
