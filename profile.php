@@ -19,6 +19,9 @@
             <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
                 <h4 class="p-0 m-2">Profile</h4>
             </label>
+            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
+                <h4 class="p-0 m-2">Id, Lineid, Balance</h4>
+            </label>
         </div>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
