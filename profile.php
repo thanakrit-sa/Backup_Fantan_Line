@@ -19,7 +19,7 @@
             <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
                 <h4 class="p-0 m-2">Profile</h4>
             </label>
-            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
+            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black; padding-top:0px;">
                 <h4 class="p-0 m-2">Id, Lineid, Balance</h4>
             </label>
         </div>
