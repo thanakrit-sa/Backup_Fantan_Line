@@ -61,7 +61,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-money-check-alt m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="<?=$credit?>">
+                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="<?=number_format($credit);?>">
                 </div>
             </div>
         </div>
