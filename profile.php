@@ -21,7 +21,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Username</div>
                     </div>
-                    <input type="text" class="form-control m-0" id="inlineFormInputGroup" placeholder="Username">
+                    <input type="text" class="form-control m-0 p-0" id="inlineFormInputGroup" placeholder="Username">
                 </div>
             </div>
         </div>
