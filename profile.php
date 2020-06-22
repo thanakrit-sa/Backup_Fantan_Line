@@ -20,7 +20,7 @@
     $result = curl_exec($ch);
     curl_close($ch);
     $resultData = json_decode($result, true);
-    echo $resultData;
+    echo $result;
     // $data = $resultData['data'];
     // $line_id = $data['user_lineid'];
     // $credit = $data['credit'];
