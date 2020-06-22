@@ -16,10 +16,10 @@
     <div class="container">
         <br>
         <div align="center">
-            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
+            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black; padding-bottom:0px;">
                 <h4 class="p-0 m-2">Profile</h4>
             </label>
-            <label class="m-0" style="color: white; letter-spacing:3px; font-weight: bold; background-color:black;">
+            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black; padding-top:0px;">
                 <h4 class="p-0 m-2">Id, Lineid, Balance</h4>
             </label>
         </div>
