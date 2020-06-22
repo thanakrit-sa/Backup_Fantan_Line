@@ -21,7 +21,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-user"></i></div>
                     </div>
-                    <input type="text" class="form-control" readonly placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg" readonly placeholder="Spie">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
@@ -29,7 +29,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-id-card"></i></div>
                     </div>
-                    <input type="text" class="form-control" placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg" placeholder="Spie">
                 </div>
             </div>
         </div>
