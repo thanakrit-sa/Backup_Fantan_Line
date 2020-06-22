@@ -23,7 +23,6 @@
         $result = curl_exec($ch);
         curl_close($ch);
         $resultData = json_decode($result, true);
-        echo $result;
         $data = $resultData['data'];
         $user_displayname = $data['user_displayname'];
         $line_id = $data['user_lineid'];
@@ -54,7 +53,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="far fa-id-card m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="<?=$line_id?>">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
@@ -62,7 +61,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="fas fa-money-check-alt m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="<?=$credit?>">
                 </div>
             </div>
         </div>
