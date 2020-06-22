@@ -16,11 +16,10 @@
     <div class="container">
         <br>
         <div align="center">
-            <label>
+            <label style="color: white; letter-spacing:2px">
                 <h4>Profile</h4>
             </label>
         </div>
-        <br>
         <div class="card card-body m-0">
             <div class="form-group m-0 p-0">
                 <div class="input-group shadow">
@@ -35,7 +34,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="far fa-id-card m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg" placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg" readonly placeholder="Spie">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
