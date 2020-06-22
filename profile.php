@@ -25,7 +25,7 @@
         $resultData = json_decode($result, true);
         echo $result;
         $data = $resultData['data'];
-        $user_displayname = $data['user_displayname']
+        $user_displayname = $data['user_displayname'];
         $line_id = $data['user_lineid'];
         $credit = $data['credit'];
     ?>
@@ -65,8 +65,6 @@
                     <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
                 </div>
             </div>
-            <p id="userId"></p>
-            <p id="displayName"></p>
         </div>
     </div>
 </body>
