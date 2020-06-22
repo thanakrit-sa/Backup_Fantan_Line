@@ -18,6 +18,8 @@
         function runApp() {
             liff.getProfile().then(profile => {
                 document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+                var temp_attribute_a = profile.userId;
+                temp_attribute_a = '<?php echo $user;?>';
                 document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
             }).catch(err => console.error(err));
         }
@@ -31,19 +33,8 @@
             }
         }, err => console.error(err.code, error.message));
     </script>
-    <?
-    $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
-    $result = curl_exec($ch);
-    curl_close($ch);
-    $resultData = json_decode($result, true);
-    echo $result;
-    // $data = $resultData['data'];
-    // $line_id = $data['user_lineid'];
-    // $credit = $data['credit'];
-?>
+    <? echo $user; ?>
+
     <div class="container">
         <br>
         <div align="center">
