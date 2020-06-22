@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" >
 </head>
 
-<body>
+<body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
         <div class="card card-body m-0">
