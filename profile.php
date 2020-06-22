@@ -13,6 +13,12 @@
 </head>
 
 <?
+    $content = file_get_contents('php://input');
+    $events = json_decode($content, true);
+
+    foreach ($events['events'] as $event) {
+        $userID = $event['source']['userId'];
+    }
     $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
