@@ -15,7 +15,7 @@
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
-        <div>
+        <div align="center">
             <label>
                 <h4>Profile</h4>
             </label>
