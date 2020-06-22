@@ -15,8 +15,8 @@
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
     <div class="container">
         <br>
-        <div align="center" style="background-color:black">
-            <label style="color: white; letter-spacing:3px; font-weight: bold">
+        <div align="center">
+            <label style="color: white; letter-spacing:3px; font-weight: bold; background-color:black">
                 <h4>Profile</h4>
             </label>
         </div>
@@ -34,7 +34,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:65px"><i class="far fa-id-card m-auto" style="font-size:30px"></i></div>
                     </div>
-                    <input type="text" class="form-control form-control-lg" readonly placeholder="Spie">
+                    <input type="text" class="form-control form-control-lg bg-white" readonly placeholder="Spie">
                 </div>
             </div>
             <div class="form-group m-0 p-0">
