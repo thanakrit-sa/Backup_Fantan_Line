@@ -16,7 +16,7 @@
     <div class="container">
         <br>
         <div class="card card-body m-0">
-            <!-- <div class="form-group m-0 p-0">
+            <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text" style="width:60px"><i class="fas fa-user-alt" style="font-size:30px"></i></div>
@@ -27,17 +27,9 @@
             <div class="form-group m-0 p-0">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text" style="width:60px"><i class="far fa-id-card" style="font-size:30px"></i></div>
+                        <div class="input-group-text" style="width:60px"><i class="far fa-id-badge" style="font-size:30px"></i></div>
                     </div>
                     <input type="text" class="form-control form-control-lg" placeholder="Spie">
-                </div>
-            </div> -->
-            <div class="row">
-                <div class="col p-0 m-0 bg-dark">
-
-                </div>
-                <div class="col p-0 m-0">
-                    <label>saasfasf</label>
                 </div>
             </div>
         </div>
