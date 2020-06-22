@@ -13,24 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 </head>
 
-<script>
-    function runApp() {
-        liff.getProfile().then(profile => {
-            document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
-            document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
-        }).catch(err => console.error(err));
-    }
-    liff.init({
-        liffId: "1654375936-D1bXp1Xg"
-    }, () => {
-        if (liff.isLoggedIn()) {
-            runApp()
-        } else {
-            liff.login();
-        }
-    }, err => console.error(err.code, error.message));
-</script>
-
 <?
     $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -46,6 +28,23 @@
 ?>
 
 <body style="background-image: url(https://img.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg?size=338&ext=jpg);">
+    <script>
+        function runApp() {
+            liff.getProfile().then(profile => {
+                document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+                document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+            }).catch(err => console.error(err));
+        }
+        liff.init({
+            liffId: "1654375936-D1bXp1Xg"
+        }, () => {
+            if (liff.isLoggedIn()) {
+                runApp()
+            } else {
+                liff.login();
+            }
+        }, err => console.error(err.code, error.message));
+    </script>
     <div class="container">
         <br>
         <div align="center">
