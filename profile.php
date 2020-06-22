@@ -17,7 +17,7 @@
         <br>
         <div align="center">
             <label style="color: white; letter-spacing:3px; font-weight: bold">
-                <h4>Profile</h4>
+                <strong>Profile</strong>
             </label>
         </div>
         <div class="card card-body m-0">
