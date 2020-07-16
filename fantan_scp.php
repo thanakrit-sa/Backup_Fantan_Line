@@ -310,9 +310,10 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $data = $resultData['data'];
             $line_id = $data['user_lineid'];
             if ($line_id == $userID) {
+                $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
-                    'text' => "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้วว"
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
                 ];
             } else {
                 $messages = [
@@ -332,12 +333,6 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
                     ]
                 ];
             }
-
-            // $response = check_Bet($text);
-            // $messages = [
-            //     'type' => 'text',
-            //     'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
-            // ];
         }
     } else if ($split_slash_count > 0) {
 
