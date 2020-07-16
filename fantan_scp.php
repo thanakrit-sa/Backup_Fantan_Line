@@ -153,11 +153,25 @@ function check_Bet($element)
         $bet_code = "Bet_Code Error";
     }
 
+    $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+    $result = curl_exec($ch);
+    curl_close($ch);
+    $resultData = json_decode($result, true);
+    $data = $resultData['data'];
+    $credit = $data['credit'];
+
     #Check Symbol
     if (strpos($element, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            create_bet_slash($bet_textSlash, $bet_valueSlash, $bet_code, $userID, $user_displayname);
-            $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            if ($bet_valueSlash > $credit) {
+                $text = "ยอดเงินคงเหลือไม่เพียงพอ";
+            } else {
+                create_bet_slash($bet_textSlash, $bet_valueSlash, $bet_code, $userID, $user_displayname);
+                $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
+            }
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
@@ -311,7 +325,7 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $line_id = $data['user_lineid'];
             $credit = $data['credit'];
             if ($line_id == $userID) {
-                // $response = check_Bet($text);
+                $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
                     'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $credit
