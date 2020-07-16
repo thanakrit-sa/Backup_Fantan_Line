@@ -373,11 +373,44 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $reponse_bet = $reponse_bet . " # " . $i . " " . $response . "\r\n";
             $i++;
         }
-
-        $messages = [
-            'type' => 'text',
-            'text' => $user_displayname . "\r\n" . $reponse_bet
-        ];
+        $ch = curl_init('http://e-sport.in.th/ssdev/fantan/api/user_test/profile/' . $userID);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',));
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $resultData = json_decode($result, true);
+        $data = $resultData['data'];
+        $line_id = $data['user_lineid'];
+        $credit = $data['credit'];
+        if ($line_id == $userID) {
+            $response = check_Bet($text);
+            $messages = [
+                'type' => 'text',
+                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
+            ];
+        } else {
+            $messages = [
+                'type' => 'text',
+                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
+                "quickReply" => [
+                    "items" => [
+                        [
+                            "type" => "action",
+                            "action" => [
+                                "type" => "message",
+                                "label" => "สมัครสมาชิก",
+                                "text" => "play"
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+        }
+        // $messages = [
+        //     'type' => 'text',
+        //     'text' => $user_displayname . "\r\n" . $reponse_bet
+        // ];
     }
 }
 
