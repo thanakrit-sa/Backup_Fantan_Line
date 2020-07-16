@@ -313,7 +313,7 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // $response = check_Bet($text);
             $messages = [
                 'type' => 'text',
-                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $line_id
+                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
             ];
         }
     } else if ($split_slash_count > 0) {
