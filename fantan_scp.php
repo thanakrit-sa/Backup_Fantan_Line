@@ -313,7 +313,7 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
                 $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
-                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
                 ];
             } else {
                 $messages = [
