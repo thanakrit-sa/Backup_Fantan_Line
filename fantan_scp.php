@@ -192,7 +192,7 @@ function check_Bet($element)
         }
     } else if (strpos($element, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            if (preg_replace("/[^0-9]/", "", $element) == true) {
+            if (preg_replace("/[0-9]/", "", $element) == true) {
                 $text = "เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             } else {
                 $text = "แทง : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
