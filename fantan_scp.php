@@ -309,11 +309,12 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $resultData = json_decode($result, true);
             $data = $resultData['data'];
             $line_id = $data['user_lineid'];
+            $credit = $data['credit'];
             if ($line_id == $userID) {
-                $response = check_Bet($text);
+                // $response = check_Bet($text);
                 $messages = [
                     'type' => 'text',
-                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $credit
                 ];
             } else {
                 $messages = [
