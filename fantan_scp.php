@@ -192,17 +192,12 @@ function check_Bet($element)
         }
     } else if (strpos($element, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            if (preg_replace("/[0-9]/", "", $element) == true) {
-                $text = "เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
+            if ($bet_valueEqual > $credit) {
+                $text = "ยอดเงินคงเหลือไม่เพียงพอ";
             } else {
-                $text = "แทง : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
+                create_bet_equal($bet_textEqual, $bet_valueEqual, $bet_code, $userID, $user_displayname);
+                $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
             }
-            // if ($bet_valueEqual > $credit) {
-            //     $text = "ยอดเงินคงเหลือไม่เพียงพอ";
-            // } else {
-            //     create_bet_equal($bet_textEqual, $bet_valueEqual, $bet_code, $userID, $user_displayname);
-            //     $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
-            // }
         } else if (strlen($bet_textEqual) == 3) {
             $data_split = str_split($bet_textEqual);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
