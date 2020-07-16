@@ -309,12 +309,35 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $resultData = json_decode($result, true);
             $data = $resultData['data'];
             $line_id = $data['user_lineid'];
+            if ($line_id == $userID) {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "😇 ชื่อผู้ใช้นี้เป็นสมาชิกอยู่แล้วว"
+                ];
+            } else {
+                $messages = [
+                    'type' => 'text',
+                    'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . "🥺 ท่านยังไม่ได้ทำการสมัครสมาชิก" . "\r\n" . "📝 สมัครสมาชิกพิมพ์ : play",
+                    "quickReply" => [
+                        "items" => [
+                            [
+                                "type" => "action",
+                                "action" => [
+                                    "type" => "message",
+                                    "label" => "สมัครสมาชิก",
+                                    "text" => "play"
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+            }
 
             // $response = check_Bet($text);
-            $messages = [
-                'type' => 'text',
-                'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
-            ];
+            // $messages = [
+            //     'type' => 'text',
+            //     'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $userID
+            // ];
         }
     } else if ($split_slash_count > 0) {
 
