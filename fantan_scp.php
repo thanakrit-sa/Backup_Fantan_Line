@@ -166,22 +166,18 @@ function check_Bet($element)
     #Check Symbol
     if (strpos($element, "/") == true) {
         if ($bet_textSlash >= 1 && $bet_textSlash <= 4) {
-            if ($bet_valueSlash > $credit) {
-                $text = "ยอดเงินคงเหลือไม่เพียงพอ";
-            } else {
+            
                 create_bet_slash($bet_textSlash, $bet_valueSlash, $bet_code, $userID, $user_displayname);
                 $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
-            }
+            
         } else if (strlen($bet_textSlash) == 3) {
             $data_split = str_split($bet_textSlash);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                if ($bet_valueSlash > $credit) {
-                    $text = "ยอดเงินคงเหลือไม่เพียงพอ";
-                } else {
+                
                     $bet_code = "2".$bet_textSlash;
                     create_bet_slash($bet_textSlash, $bet_valueSlash, $bet_code, $userID, $user_displayname);
                     $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
-                }
+                
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
@@ -192,22 +188,18 @@ function check_Bet($element)
         }
     } else if (strpos($element, "=") == true) {
         if ($bet_textEqual >= 1 && $bet_textEqual <= 4) {
-            if ($bet_valueEqual > $credit) {
-                $text = "ยอดเงินคงเหลือไม่เพียงพอ";
-            } else {
+            
                 create_bet_equal($bet_textEqual, $bet_valueEqual, $bet_code, $userID, $user_displayname);
                 $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
-            }
+            
         } else if (strlen($bet_textEqual) == 3) {
             $data_split = str_split($bet_textEqual);
             if (($data_split[0] >= 1 && $data_split[0] <= 6) && ($data_split[1] >= 1 && $data_split[1] <= 6) && ($data_split[2] >= 1 && $data_split[2] <= 6)) {
-                if ($bet_valueEqual > $credit) {
-                    $text = "ยอดเงินคงเหลือไม่เพียงพอ";
-                } else {
+                
                     $bet_code = "2".$bet_textEqual;
                     create_bet_equal($bet_textEqual, $bet_valueEqual, $bet_code, $userID, $user_displayname);
                     $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
-                }
+                
             } else {
                 $text = "การเดิมพันแบบสเปเชียลสามารถกรอกหมายเลขได้เพียง 1-6 เท่านั้น";
             }
