@@ -204,7 +204,7 @@ function check_Bet($element)
                 if ($bet_valueEqual > $credit) {
                     $text = "ยอดเงินคงเหลือไม่เพียงพอ";
                 } else {
-                    $bet_code = $bet_textEqual;
+                    $bet_code = "2".$bet_textEqual;
                     create_bet_equal($bet_textEqual, $bet_valueEqual, $bet_code, $userID, $user_displayname);
                     $text = "แทง/เดิมพันเลข : " . $bet_textEqual . "\r\n" . "จำนวน : " . $bet_valueEqual . " บาท " . "\r\n" . "Code : " . $bet_code;
                 }
