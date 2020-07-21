@@ -376,7 +376,7 @@ if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
         $line_id = $data['user_lineid'];
         $credit = $data['credit'];
         if ($line_id == $userID) {
-            $response = check_Bet($text);
+            $response = check_Bet($element);
             $messages = [
                 'type' => 'text',
                 'text' => "ผู้ใช้งาน : " . $user_displayname . "\r\n" . $response
