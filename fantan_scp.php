@@ -142,13 +142,13 @@ function check_Bet($element)
 
     #Check Bet_Code
     if (($bet_textEqual == 1 || $bet_textSlash == 1) || ($bet_textSlash == 1 || $bet_textSlash == 1)) {
-        $bet_code = "1";
+        $bet_code = "1001";
     } else if (($bet_textEqual == 2 || $bet_textSlash == 2) || ($bet_textSlash == 2 || $bet_textSlash == 2)) {
-        $bet_code = "2";
+        $bet_code = "1002";
     } else if (($bet_textEqual == 3 || $bet_textSlash == 3) || ($bet_textSlash == 3 || $bet_textSlash == 3)) {
-        $bet_code = "3";
+        $bet_code = "1003";
     } else if (($bet_textEqual == 4 || $bet_textSlash == 4) || ($bet_textSlash == 4 || $bet_textSlash == 4)) {
-        $bet_code = "4";
+        $bet_code = "1004";
     } else {
         $bet_code = "Bet_Code Error";
     }
