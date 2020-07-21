@@ -178,7 +178,7 @@ function check_Bet($element)
                 if ($bet_valueSlash > $credit) {
                     $text = "ยอดเงินคงเหลือไม่เพียงพอ";
                 } else {
-                    $bet_code = 2+$bet_textSlash;
+                    $bet_code = "2".$bet_textSlash;
                     create_bet_slash($bet_textSlash, $bet_valueSlash, $bet_code, $userID, $user_displayname);
                     $text = "แทง/เดิมพันเลข : " . $bet_textSlash . "\r\n" . "จำนวน : " . $bet_valueSlash . " บาท " . "\r\n" . "Code : " . $bet_code;
                 }
